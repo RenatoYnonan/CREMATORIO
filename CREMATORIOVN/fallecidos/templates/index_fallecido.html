@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="content-grid-layoud">
+    <div>
+        <h5 class="title-list-table">Listado de Fallecidos</h5>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>     
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">F. Nacimiento</th>
+                    <th scope="col">F. Fallecido</th>
+                    <th scope="col">Género</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in fallecidos %}
+                <tr>
+                    <td>{{ i.nombre_completo }}  {{ i.apellido }}</td>
+                    
+                    <td>{{ i.fecha_nacimiento }}</td>
+                    <td>{{ i.fecha_fallecido }}</td>
+                    <td><span class=" {% if i.genero == 'M' %}  span-gender-male {% else%} span-gender-female {% endif %} ">{{ i.get_genero_display|upper }}</span></td>
+                    <td class="td-actions">
+                        <a href=""><i class="fa-solid fa-pencil"></i></a>
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'fallecidos:condolencias' i.pk %}"><i class="fa-solid fa-cross"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        {% if condolencias %}
+        <h6 class="title-list-table">CONDOLENCIAS</h6>
+        <span>Se ah encontrado: {{ count }} </span>
+        {% for cn in condolencias %}
+        <div class="card-condolencias" style="max-width: 540px;">
+            <div class="card-header-condolencias">
+                <img class="img-condolencias" src="https://crematoriovirgendelanatividadtpp.com/wp-content/uploads/2024/09/logo-crema-ok-sin-fondo.png" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="card-body-condolencias">
+                <p class="" style="margin: 0px;">{{ cn.descripcion }}</p>
+
+                    <p class="" ><small class="text-muted">{{ cn.fecha_creacion }}</small></p>
+                    <div class="action-btn-icon">
+                        <a href=""><i class="fa-solid fa-pencil"></i></a>
+                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href=""><i class="fa-regular fa-eye"></i></a>
+                    </div>
+
+            </div>
+          </div>
+        {% endfor %}
+        {% else %}
+        <div class="card-danger bg-danger">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span > No se encontraron Condolencias por listar</span>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

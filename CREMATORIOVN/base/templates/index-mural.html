@@ -1,0 +1,26 @@
+{% extends 'index-crematorio.html' %}
+{% block content-crematorio-principal %}
+<div class="container">
+    <h1>Mural del recuerdo</h1>
+<span>Este espacio está dedicado con amor y respeto a conmemorar las vidas de aquellos seres queridos que han partido,
+    brindando un lugar para recordar sus legados y celebrar los momentos compartidos.</span>
+<div class="grid-recuerdos">
+    {% for i in fallecido %}
+    <div class="item-condolencias">
+        <img class="img-fallecido-fit"
+            src="https://crematoriovirgendelanatividadtpp.com/wp-content/uploads/2024/11/Alberto-Garcia-del-Aguila.jpg"
+            class="card-img-top" alt="...">
+        <div class="flex-fallecio">
+            <h5>{{ i.nombre_completo }} <br> {{ i.apellido }}</h5>
+            <i class="fa-solid fa-qrcode"></i>
+        </div>
+        <div class="flex-date-fn-ff">
+            <span><i class="fa-solid fa-cross"></i>FN: {{ i.fecha_nacimiento|date:'Y/m/d' }}</span>
+            <span><i class="fa-solid fa-cross"></i>FF: {{ i.fecha_fallecido|date:'Y/m/d' }}</span>
+        </div>
+        <a href="{% url 'condolencia' i.pk %}" class="btn-condolencias">DEJAR CONDOLENCIAS</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+</div>

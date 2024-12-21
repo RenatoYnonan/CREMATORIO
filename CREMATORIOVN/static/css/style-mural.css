@@ -1,0 +1,22 @@
+section.section-condolencia-fallecido{
+    height: calc(100vh - 100px);
+    position: relative;
+    overflow: hidden;
+}
+
+div.content{
+    z-index: 9999999999;
+}
+
+div.content-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+video.background{
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}

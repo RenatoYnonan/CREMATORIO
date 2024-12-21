@@ -1,0 +1,244 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/* :root {
+    --gender-male: #2980b9;
+    --gender-female: #ec7063;
+} */
+
+div.content-grid-layoud {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 2rem;
+}
+
+h5.title-list-table {
+    background-color: #866ec7;
+    color: #FFF;
+    width: max-content;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+span.span-gender-male {
+    background-color: var(--gender-male);
+    color: #FFF;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+span.span-gender-female {
+    background-color: var(--gender-female);
+    color: #FFF;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+/* ICONOS */
+
+td.td-actions{
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+i.fa-pencil{
+    background-color: #27ae60;
+}
+
+i.fa-cross, i.fa-eye{
+    background-color: #866ec7 ;
+}
+
+i.fa-trash{
+    background-color: var(--gender-female);
+}
+
+i.fa-pencil,
+i.fa-trash,
+i.fa-eye,
+i.fa-cross{
+    height: 30px;
+    width: 30px;
+    border-radius: 50% 50%;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+/* NAVBAR */
+.bg-crematorio-color{
+    background-color: #7a3967;
+}
+
+.nav-link{
+    color: #FFF;
+    font: bold 17px/25px 'poppins',sans-serif;
+}
+
+.nav-link:hover{
+    color: #ca9e67;
+}
+
+/* CONTAINER */
+div.container{
+    width: 80%;
+}
+
+/* CONTENEDOR DE RECUERDOS GRID */
+div.grid-recuerdos{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat( auto-fill, minmax(250px, 1fr));
+
+    div.item-condolencias{
+        padding: 25px;
+        box-sizing: border-box;
+        text-align: justify;
+        color: #FFF;
+        border-radius: 10px;
+        background: linear-gradient( 135deg ,#7a3967 0%, #ca9e67 100%);
+    }
+}
+
+div.item-condolencias-01{
+    box-sizing: border-box;
+    text-align: justify;
+    color: #FFF;
+    border-radius: 10px;
+    background: linear-gradient( 135deg ,#7a3967 0%, #ca9e67 100%);
+
+    div.content-flex-body{
+        padding: 25px;
+    }
+}
+
+.img-fallecido-fit{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50% 50%;
+    margin-bottom: 10px;
+}
+
+.img-fallecido-fit-01{
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+    mask-image: linear-gradient(#7a3967 0%, transparent 100%);
+}
+
+div.flex-fallecio{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    h5{
+        color: #FFF;
+        font: bold 25px/30px 'poppins',sans-serif;
+        margin: 0px;
+    }
+}
+
+.fa-qrcode{
+    font-size: 40px;
+}
+
+.flex-date-fn-ff{
+
+    span{
+        display: flex;
+        border-radius: 15px;
+        font: bold 17px/35px 'poppins',sans-serif ;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .fa-cross{
+        background-color: #ca9e67;
+    }
+}
+
+a.btn-condolencias{
+    display: block;
+    padding: 2px 12px; 
+    width: 100%;
+    text-align: center;
+    background-color: #ca9e67;
+    color: #FFF;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px #0000008c;
+    font: 500 15px/40px 'poppins',sans-serif;
+}
+
+
+/* IMAGENES */
+img.img-condolencias{
+    width: 100%;
+    height: auto;
+
+}
+
+/* TARJETAS O CARD */
+
+div.card-danger{
+    padding: 10px;
+    display: flex;
+    gap: 1rem;
+    box-sizing: border-box;
+    color: #FFF;
+    border-radius: 10px;
+    .fa-circle-exclamation{
+        font-size: 25px;
+        margin: auto;
+    }
+}
+
+div.card-condolencias{
+    display: grid;
+    gap: 1rem;
+    background-color: #FFF;
+    grid-template-columns: 1fr 2.5fr;
+    margin-bottom: 1rem;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    div.card-header-condolencias{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.action-btn-icon{
+    display: flex;
+    gap: 0.5rem;
+}
+
+.img-logo-crematorio{
+    max-height: 60px;
+}
+
+nav.navbar{
+    position: relative;
+    height: 100px;
+    margin: 0px;
+}
+
+/* div.action-date-flex-condolencias{
+    display: flex;
+    gap: 1rem;
+    .action-btn-icon{
+        display: flex;
+        gap: 0.5rem;
+    }
+} */
