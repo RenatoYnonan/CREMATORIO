@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style-fallecido.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style-modal.css' %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
 		integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -49,22 +50,7 @@
 						<a href="{% url 'fallecidos:fallecidos' %}">Fallecidos</a>
 					</li>
 					<li>
-						<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-							class="dropdown-toggle">Pages</a>
-						<ul class="collapse list-unstyled" id="pageSubmenu">
-							<li>
-								<a href="#">Page 1</a>
-							</li>
-							<li>
-								<a href="#">Page 2</a>
-							</li>
-							<li>
-								<a href="#">Page 3</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Portfolio</a>
+						<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
 					</li>
 					<li>
 						<a href="#">Contact</a>
@@ -95,6 +81,7 @@
 	<script src="{% static 'js/popper.js' %}"></script>
 	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 	<script src="{% static 'js/main.js' %}"></script>
+	
 </body>
 
 </html>

@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.views.generic import *
 from .models import *
 
-# Create your views here.
+
 
 class Fallecidos(ListView):
     model = Fallecido
-    context_object_name = 'fc'
+    context_object_name = 'fallecidos'
     template_name = 'index_fallecido.html'
 
     def get_context_data(self, **kwargs):

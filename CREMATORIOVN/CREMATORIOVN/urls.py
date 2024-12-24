@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('base.urls')),
     path('intranet-crematorio/', include(('intranet_crematorio.urls', 'intranet_crematorio'), namespace='intranet-crematorio')),
     path('fallecidos/', include(('fallecidos.urls', 'fallecidos'), namespace='fallecidos')),
+    path('familiares/', include(('familiares.urls', 'familiares'), namespace='familiares')),
     path('admin/', admin.site.urls),
 ]

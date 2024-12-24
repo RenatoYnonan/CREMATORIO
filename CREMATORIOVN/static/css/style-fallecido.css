@@ -234,6 +234,17 @@ nav.navbar{
     margin: 0px;
 }
 
+/* FORMULARIOS */
+
+label{
+    margin: 0;
+    line-height: 35px;
+}
+
+.form-control{
+    border: 1px solid #DEDEDE;
+}
+
 /* div.action-date-flex-condolencias{
     display: flex;
     gap: 1rem;
