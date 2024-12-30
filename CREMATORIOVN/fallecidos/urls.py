@@ -4,6 +4,8 @@ from fallecidos.views import *
 urlpatterns = [
     path('listado-fallecidos/', Fallecidos.as_view() , name='fallecidos'),
     path('listado-fallecidos/<int:pk>/', Fallecidos.as_view(), name='condolencias'),
-
+    path('create-deceased', CreateDeceased.as_view(), name='create-deceased'),
+    path('update-deceased/<int:pk>', UpdateDeceased.as_view(), name='update-deceased'),
+    #EXPORTAR DATOS  A EXCEL
     path('exp-fallecidos/', ReporteFallecido.as_view() , name='Excel-Fallecidos'),
 ]

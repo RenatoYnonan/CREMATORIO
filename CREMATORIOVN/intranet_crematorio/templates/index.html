@@ -34,6 +34,13 @@
 					<li class="active">
 						<a href="#">Dashboard</a>
 					</li>
+					
+					<li>
+						<a href="{% url 'fallecidos:fallecidos' %}">Fallecidos</a>
+					</li>
+					<li>
+						<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
+					</li>
 					<li >
 						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
 							class="dropdown-toggle">Convenios</a>
@@ -45,12 +52,6 @@
 								<a href="#">Funerarias</a>
 							</li>
 						</ul>
-					</li>
-					<li>
-						<a href="{% url 'fallecidos:fallecidos' %}">Fallecidos</a>
-					</li>
-					<li>
-						<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
 					</li>
 					<li>
 						<a href="{% url 'familiares:list-familiares' %}">Enviar Mensaje SMS</a>

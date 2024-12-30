@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.views.generic import *
+
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+
+#IMPORTACIONES 
 from .models import *
+from .forms import *
+
+#COMPONENTES DE OPENPYXL
 from openpyxl  import Workbook
 from openpyxl.styles import Alignment
-from django.http import HttpResponse
-import datetime
-
 
 class ReporteFallecido(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -72,6 +77,20 @@ class Fallecidos(ListView):
             context['condolencias'] = None
 
         return context
+
+class CreateDeceased(CreateView):
+    model = Fallecido
+    form_class = FallecidosForms
+    template_name = 'index-fallecido-form.html'
+    success_url =  reverse_lazy('fallecidos:fallecidos')
+
+
+class UpdateDeceased(UpdateView):
+    model = Fallecido
+    form_class = FallecidosForms
+    template_name = 'index-fallecido-form.html'
+    success_url =  reverse_lazy('fallecidos:fallecidos')
+
 
 
     

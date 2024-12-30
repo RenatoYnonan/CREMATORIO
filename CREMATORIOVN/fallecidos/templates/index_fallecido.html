@@ -5,7 +5,7 @@
         <div class="flex-content-modal">
             <h5 class="title-list-table">Listado de Fallecidos</h5>
             <div>
-                <button class="btn btn-primary">NUEVO FALLECIDO</button>
+                <a href="{% url 'fallecidos:create-deceased' %}" class="btn btn-primary">NUEVO FALLECIDO</a>
                 <a href="{% url 'fallecidos:Excel-Fallecidos' %}" class="btn btn-secondary">Exportar a Excel</a>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <td>{{ i.fecha_fallecido }}</td>
                     <td><span class=" {% if i.genero == 'M' %}  span-gender-male {% else%} span-gender-female {% endif %} ">{{ i.get_genero_display|upper }}</span></td>
                     <td class="td-actions">
-                        <a href=""><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{% url 'fallecidos:update-deceased' i.id %}"><i class="fa-solid fa-pencil"></i></a>
                         <a href=""><i class="fa-solid fa-trash"></i></a>
                         <a href="{% url 'fallecidos:condolencias' i.pk %}"><i class="fa-solid fa-cross"></i></a>
                     </td>
