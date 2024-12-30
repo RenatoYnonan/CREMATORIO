@@ -2,7 +2,13 @@
 {% block content %}
 <div class="content-grid-layoud">
     <div>
-        <h5 class="title-list-table">Listado de Fallecidos</h5>
+        <div class="flex-content-modal">
+            <h5 class="title-list-table">Listado de Fallecidos</h5>
+            <div>
+                <button class="btn btn-primary">NUEVO FALLECIDO</button>
+                <a href="{% url 'fallecidos:Excel-Fallecidos' %}" class="btn btn-secondary">Exportar a Excel</a>
+            </div>
+        </div>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>     

@@ -10,6 +10,8 @@ class FamiliaresForms(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields['estado'].widget =  forms.HiddenInput()
+
         placeholders = {
             'name': 'Nombre Completo',
             'lastname': 'Apellido',

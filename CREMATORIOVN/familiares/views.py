@@ -6,8 +6,8 @@ from .forms import *
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
-
-from django.http import HttpResponseRedirect
+from openpyxl import Workbook
+from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
 class ListFamily(TemplateView):
@@ -41,4 +41,31 @@ class FamiliarUpdate(UpdateView):
     template_name = 'index-form-familiar.html'
     success_url =  reverse_lazy('familiares:list-familiares')
     
-    
+
+
+class ReporteExcel(TemplateView):
+    def get(self, request, *args, **kwargs):
+        exfami = ModelsFamiliar.objects.all()
+        wb = Workbook()
+        ws = wb.active
+        ws['B1'] = 'REPORTE DE FAMILIARES'
+
+        ws.merge_cells('B1:E1')
+        ws['B3'] = 'NOMBRES'
+        ws['C3'] = 'APELLIDOS'
+
+        contador = 2
+
+        for i in exfami:
+            ws.cell(row=contador, column=2).value = i.name.capitalize()
+            ws.cell(row=contador, column=3).value = i.lastname.capitalize()
+
+            contador += 1
+        
+        Reporte_Familiares = "Crematorio_Reporte_Familiares.xlsx"
+        response = HttpResponse(content_type = "aplication/ms-excel")
+        content = "attachment; filename = {0}".format(Reporte_Familiares)
+        response['Content-Disposition'] = content
+        wb.save(response)
+
+        return response
