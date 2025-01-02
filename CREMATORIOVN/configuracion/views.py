@@ -4,3 +4,4 @@ from django.views.generic import *
 
 class ConfiguracionEmpresa(TemplateView):
     template_name = 'index-empresa.html'
+    
