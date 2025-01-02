@@ -46,10 +46,10 @@
 							class="dropdown-toggle">Convenios</a>
 						<ul class="collapse list-unstyled" id="homeSubmenu">
 							<li>
-								<a href="#">Instituciones</a>
+								<a href="{% url 'convenios:list-instituciones' %}">Instituciones</a>
 							</li>
 							<li>
-								<a href="#">Funerarias</a>
+								<a href="{% url  'convenios:list-funerarias' %}">Funerarias</a>
 							</li>
 						</ul>
 					</li>
@@ -60,7 +60,7 @@
 						<a href="{% url 'familiares:list-familiares' %}">Enviar Correos</a>
 					</li>
 					<li>
-						<a href="{% url 'familiares:list-familiares' %}">Configuración</a>
+						<a href="{% url 'configuracion:config-company' %}">Configuración</a>
 					</li>
 					<li>
 						<a href="#">Contact</a>

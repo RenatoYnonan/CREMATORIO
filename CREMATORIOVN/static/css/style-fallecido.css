@@ -22,6 +22,10 @@ h5.title-list-table {
     border-radius: 20px;
 }
 
+td.td-item{
+    vertical-align: middle;
+}
+
 span.span-gender-male {
     background-color: var(--gender-male);
     color: #FFF;
@@ -186,6 +190,13 @@ img.img-condolencias{
     width: 100%;
     height: auto;
 
+}
+
+img.img-ins-fun{
+    width: 45px;
+    height: 45px;
+    border-radius: 50% 50%;
+    object-fit: cover;
 }
 
 /* TARJETAS O CARD */

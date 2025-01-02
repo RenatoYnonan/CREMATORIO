@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'familiares',
     'fallecidos',
     'intranet_crematorio',
-    'convenios'
+    'convenios',
+    'catalogo',
+    'configuracion',
 ]
 
 MIDDLEWARE = [
