@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.forms import inlineformset_factory
 
 class FormSocial(forms.ModelForm):
     class Meta:
@@ -25,7 +26,6 @@ class FormCompany(forms.ModelForm):
     def __init__(self, *args, **kargs):
         super().__init__(*args, **kargs)
 
-
         placeholder_company = {
             'name_company' : 'Ingrese el nombre de la empresa',
             'slogan_company': 'Ingrese el slogan de la empresa',
@@ -39,4 +39,6 @@ class FormCompany(forms.ModelForm):
 
             if field_a in placeholder_company:
                 field_b.widget.attrs['placeholder'] = placeholder_company[field_a]
+            
+
 

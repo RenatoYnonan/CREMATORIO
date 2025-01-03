@@ -5,7 +5,12 @@
     <span>Set up your company's basic information</span>
 
     <div>
-
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+        <button class="btn btn-primary" type="submit">GUARDAR CAMBIOS</button>
+    <a class="btn btn-danger" href="#" onclick="location.reload()">CANCELAR ACCIÓN</a>
     </div>
 </div>
 {% endblock %}

@@ -9,6 +9,10 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
+	<!-- FORMULARIOS -->
+	<link rel="stylesheet" href="{% static 'css/style-css-form.css' %}">
+	<!-- FINALIZAR FORMULARIO -->
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'css/style-fallecido.css' %}">
@@ -43,6 +47,18 @@
 					</li>
 					<li >
 						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+							class="dropdown-toggle">Catalogo</a>
+						<ul class="collapse list-unstyled" id="homeSubmenu">
+							<li>
+								<a href="{% url 'convenios:list-instituciones' %}">Productos</a>
+							</li>
+							<li>
+								<a href="{% url  'convenios:list-funerarias' %}">Planes</a>
+							</li>
+						</ul>
+					</li>
+					<li >
+						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
 							class="dropdown-toggle">Convenios</a>
 						<ul class="collapse list-unstyled" id="homeSubmenu">
 							<li>
@@ -60,10 +76,7 @@
 						<a href="{% url 'familiares:list-familiares' %}">Enviar Correos</a>
 					</li>
 					<li>
-						<a href="{% url 'configuracion:config-company' %}">Configuración</a>
-					</li>
-					<li>
-						<a href="#">Contact</a>
+						<a href="{% url 'configuracion:config-company' 1 %}">Configuración</a>
 					</li>
 				</ul>
 
