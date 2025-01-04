@@ -27,6 +27,10 @@ urlpatterns = [
     path('convenios/', include(('convenios.urls', 'convenios'), namespace='convenios')),
     path('admin/', admin.site.urls),
     #DATOS DE EMPRESA
-    path('empresa/', include(('configuracion.urls', 'configuracion'), namespace='empresa'))
+    path('empresa/', include(('configuracion.urls', 'configuracion'), namespace='empresa')),
+
+    #CATALOGO DE PRODUCTOS
+    path('catalogo/', include(('catalogo.urls', 'catalogo'), namespace='catalogo'))
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
