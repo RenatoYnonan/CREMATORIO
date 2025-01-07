@@ -37,8 +37,8 @@
                     <td>{{ i.stock_product }}</td>
                     <td>{{ i.state_product }}</td>
                     <td class="td-actions">
-                        <a href=""><i class="fa-solid fa-pencil"></i></a>
-                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'catalogo:update-product' i.id %}"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{% url 'catalogo:delete-product' i.id %}"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
