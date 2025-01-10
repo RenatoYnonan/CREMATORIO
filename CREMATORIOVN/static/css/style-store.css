@@ -1,0 +1,117 @@
+*{
+    margin: 0px;
+    padding: 0;
+}
+div.store-product-plan{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 2rem;
+}
+
+div.flex-cart-store{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    a.button-details{
+        line-height: 40px;
+        text-align: center;
+        width: 100%;
+        border: none;
+        border-radius: 20px 20px;
+        color: #FFF;
+        background-color: #7a3967;
+    }
+
+    button.icon{
+        height: 40px;
+        border: none;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50% 50%;
+        background-color: #Ca9e67;
+    }
+
+    button.icon:hover{
+        background-color: #cca77a;
+    }
+
+    .fa-cart-plus{
+        color: #FFF;
+    }
+}
+
+/* ESTILOS DEL BUSCADOR */
+input[type='search'].search-store{
+    width: 100%;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 2px solid #DEDEDE;
+}
+
+input[type='search'].search-store:focus{
+    outline: 3px solid #7a3967;
+}
+/* FIN DEL BUSCADOR */
+
+
+
+span.price-product{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 50px;
+    color: #7a3967;
+}
+
+span.descriptions{
+    font: 100 16px/35px 'poppins',sans-serif;
+}
+
+h3.title-filter{
+    font: 500 20px/40px 'poppins',sans-serif;
+    margin: 0;
+}
+
+div.list-product-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+
+    div.item-product{
+        background-color: #FFF;
+        padding: 15px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border: 2px solid #DEDEDE;
+        border-radius: 10px;
+    }
+
+    div.item-product h5{
+        font: 500 20px/25px 'poppins',sans-serif;
+    }
+
+    div.item-product p{ 
+        background-color: #f4f4f5;
+        color: black;
+        width: min-content;
+        padding: 0px 10px;
+        border-radius: 20px;
+    }
+}
+
+
+/* DETALLES */
+
+div.details-products{
+    display: flex;
+    gap: 1rem;
+
+    div.details-products div{
+        flex: 1;
+    }
+}
