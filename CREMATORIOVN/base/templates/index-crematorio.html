@@ -12,9 +12,24 @@
     <link rel="stylesheet" href="{% static 'css/style-mural.css' %}">
 
     <link rel="stylesheet" href="{% static 'css/style-store.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-details-product.css' %}">
+
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- SLICK -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- JS de Slick -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
 </head>
 
 <body>
@@ -43,7 +58,7 @@
                         <a class="nav-link" href="{% url 'store' %}">Tienda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">blog</a>
+                        <a class="nav-link" href="{% url 'blogs' %}">blog</a>
                     </li>
                 </ul>
             </div>
@@ -51,9 +66,9 @@
     </nav>
 
     <main>
-        
-            {% block content-crematorio-principal %}
-            {% endblock %}
+
+        {% block content-crematorio-principal %}
+        {% endblock %}
     </main>
 
 

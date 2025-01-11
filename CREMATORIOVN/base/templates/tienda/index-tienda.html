@@ -2,11 +2,15 @@
 {% load static %}
 {% block content-crematorio-principal %}
 <div class="container-store">
-    <div>
-
-    </div>
-    <div>
-
+    <div class="container cont-store-grid">
+        <div>
+            <h1 class="title-store">Honrando Recuerdos, Preservando Legados</h1>
+            <p class="descrip-store">Servicios de cremación con compasión y respeto</p>
+            <button class="btn btn-primary">Explorar nuestros servicios</button>
+        </div>
+        <div>
+            <img src="{% static 'images/LOGO.png' %}" alt="">
+        </div>
     </div>
 </div>
 <div class="container">
@@ -51,7 +55,7 @@
                 <div class="item-product">
                     <h5>{{ i.name_product }}</h5>
                     <p>Madera</p>
-                    <img src="{% static 'images/LOGO.png' %}" alt="">
+                    <img src="{% static 'images/EXCESO DE IA (1).png' %}" alt="">
                     <span class="price-product">S/ {{ i.price_product }}</span>
                     <div class="flex-cart-store">
                         <a class="button-details" href="{% url 'details-product' i.slug_product %}"> Ver detalles</a>

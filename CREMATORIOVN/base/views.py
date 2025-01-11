@@ -5,6 +5,7 @@ from fallecidos.models import *
 from django.core.paginator import Paginator
 
 from catalogo.models import *
+from blogs.models import *
 
 from fallecidos.forms import *
 from django.urls import reverse_lazy
@@ -58,6 +59,7 @@ class CreateCondolencias(CreateView):
 #     return render(request, 'index-condolencias.html', { 'condolencias': cn, 'falledico': fallecido})
 
 
+#PRODUCTOS Y PLANES DE CREMACION
 def Tienda(request):
     urnas =  ModelsProduct.objects.filter(category_product = 'URNAS')
 
@@ -72,3 +74,13 @@ def detailsProduct(request, slug_product):
     details_product = get_object_or_404(ModelsProduct, slug_product=slug_product)
     return render(request, 'tienda/index-details-product.html', {'product': details_product})
 
+# BLOG INFORMATIVOS
+
+def indexblog(request):
+    obj_blog  =  BlogPost.objects.all()
+    return render(request, 'blogs/index-blog.html', {'blogs': obj_blog})
+
+
+def detailblog(request, slug_post):
+    detail_blog =  get_object_or_404(BlogPost, slug_post=slug_post)
+    return render(request, 'blogs/index-details.html', {'obj_detail': detail_blog})

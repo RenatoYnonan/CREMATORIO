@@ -30,7 +30,10 @@ urlpatterns = [
     path('empresa/', include(('configuracion.urls', 'configuracion'), namespace='empresa')),
 
     #CATALOGO DE PRODUCTOS
-    path('catalogo/', include(('catalogo.urls', 'catalogo'), namespace='catalogo'))
+    path('catalogo/', include(('catalogo.urls', 'catalogo'), namespace='catalogo')),
+
+    #BLOGS POST
+    path('blogs/', include(('blogs.urls', 'blogs'), namespace='blogs')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

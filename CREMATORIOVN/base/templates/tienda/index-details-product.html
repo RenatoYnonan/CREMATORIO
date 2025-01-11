@@ -1,15 +1,36 @@
 {% extends 'index-crematorio.html' %}
+{% load static %}
+
 {% block content-crematorio-principal %}
-<div class="container">
-    <div class="details-products">
-        <div>
-
+<div class="content-details-product">
+    <div class="container details-products">
+        <div class="div-content-details-img">
+            <img class="img-details-product" src="{% static 'images/EXCESO DE IA (1).png' %}" alt="">
         </div>
-        <div>
-
+        <div class="div-content-details">
+            <span class="sub-title-details">Urna de Madera</span>
+            <h1 class="title-details-product">{{ product.name_product }}</h1>
+            <p class="desp-details-product">{{ product.descriptions_product }}</p>
+            <p class="price-details-product"> S/. {{ product.price_product }}</p>
+            <div>
+                <button class="btn btn-outline-dark">Agregar Carrito</button>
+                <button class="btn btn-primary">Comprar Ahora</button>
+            </div>
         </div>
-
     </div>
 
 </div>
+{# nota Carrusel de Productos Relacionados #}
+<div class="container">
+    <div class="details-carousel">
+        <h3 class="title-carousel">Productos Relacionados</h3>
+        <div class="carousel-items">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

@@ -1,0 +1,75 @@
+div.content-details-product{    
+    height: calc(100vh - 100px);
+    background: linear-gradient(90deg, #ffffff 50%, #f4f4f5 50%);
+}
+
+
+div.details-products{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+h1.title-details-product{
+    font: bold 35px/45px 'poppins', sans-serif;
+}
+
+p.desp-details-product{
+    font: 100 16px/25px 'poppins',sans-serif;
+}
+
+p.price-details-product{
+    font: bold 30px/40px 'poppins',sans-serif;
+    color: #7a3967;
+}
+
+
+/* SUBTITULO */
+span.sub-title-details{
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+div.div-content-details{
+    display: flex;
+    padding: 60px;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div.div-content-details-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img.img-details-product{
+        height: 400px;
+        width: auto;
+    }
+}
+
+/* CAROUSEL */
+div.details-carousel{
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h3.title-carousel{
+    font: bold 30px/45px 'poppins',sans-serif;
+}
+
+div.carousel-items{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+div.carousel-item, div.item{
+    height: 250px;
+    background-color: #FFF;
+    border: 2px solid #f4f4f5;
+    border-radius: 15px;
+}

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'tinymce',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     'convenios',
     'catalogo',
     'configuracion',
+    'blogs',
+
 ]
 
 MIDDLEWARE = [
@@ -133,3 +136,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TINYMCE_DEFAULT_CONFIG = {
+    "height": 500,
+    "width": 900,
+    "plugins": "image,media,link,code",
+    "toolbar": "undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image media | code",
+    "image_advtab": True,
+}

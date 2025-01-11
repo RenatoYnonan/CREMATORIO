@@ -7,6 +7,8 @@ name = "pypi"
 django = "*"
 pillow = "*"
 python-slugify = "*"
+django-ckeditor = "*"
+django-tinymce = "*"
 
 [dev-packages]
 

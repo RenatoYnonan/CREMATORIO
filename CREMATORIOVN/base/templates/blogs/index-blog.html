@@ -1,0 +1,25 @@
+
+{% extends 'index-crematorio.html' %}
+{% block content-crematorio-principal %}
+<div class="container">
+    <h1>Block</h1>
+    <p>Descubre Nuestra Variedad de Artículos</p>
+    <div class="grid-blogs">
+        {# NOTA: LISTADOS DE BLOGS #}
+        {% for i in blogs %}
+        <div class="card-blogs">
+            <div class="card-blog-img">
+                {# NOTA: Imagen del POST #} 
+
+            </div>
+            <div class="card-body-blog">
+                <span>{{ i.date_create }}</span>
+                <h3>{{ i.title_post }}</h3>
+                <p>{{ i.descriptions_post }}</p>
+                <a href="{% url 'detail-blog' i.slug_post %}" class="btn btn-primary">Leer Más <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
