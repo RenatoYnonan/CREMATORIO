@@ -20,6 +20,9 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    {# ESTILOS DE CONVENIOS #}
+    <link rel="stylesheet" href="{% static 'css/style-convenios.css' %}">
+
 
     <!-- SLICK -->
 
@@ -43,16 +46,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown" style="justify-content: flex-end;">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Servicios Cremación</a>
+                        <a class="nav-link active" aria-current="page" href="/">Servicios Cremación</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Convenios</a>
+                        <a class="nav-link" href="{% url 'convenios' %}">Convenios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'recuerdos' %}">Mural Recuerdo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
+                        <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'store' %}">Tienda</a>
@@ -68,6 +71,33 @@
     <main>
 
         {% block content-crematorio-principal %}
+        {% endblock %}
+
+        {% block c-general %}
+
+        {# NOTA: Portada Principal #}
+        {%include 'index-portada.html' %}
+
+        {# NOTA: Servicios #}
+        {% include 'index-servicios.html' %}
+
+        {# NOTA: Planificacion #}
+        {% include 'index-planificacion.html'%}
+
+        {# NOTA: Ubicacion #}
+        {% include 'index-ubicacion.html' %}
+
+        {# NOTA: vendedores #}
+        {% include 'index-vendedores.html' %}
+
+        {# NOTA: Email marketing #}
+        {% include 'index-email.html' %}
+
+        {# NOTA: Review #}
+        {% include 'index-review.html' %}
+
+        {# NOTA: Preguntas Frecuentes #}
+        {% include 'index-FQ.html' %}
         {% endblock %}
     </main>
 

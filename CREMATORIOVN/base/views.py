@@ -84,3 +84,13 @@ def indexblog(request):
 def detailblog(request, slug_post):
     detail_blog =  get_object_or_404(BlogPost, slug_post=slug_post)
     return render(request, 'blogs/index-details.html', {'obj_detail': detail_blog})
+
+
+#CONVENIOS CON FUNDACIONES
+def Convenios(request):
+    return render(request, 'convenios/index-convenios.html')
+
+
+#NOSOTROS
+def Nosotros(request):
+    return render(request, 'nosotros/index-nosotros.html')

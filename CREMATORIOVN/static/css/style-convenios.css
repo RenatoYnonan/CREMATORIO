@@ -1,0 +1,216 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+div.grid-reviews,
+div.grid-convenios-funerarias,
+div.grid-convenios-institucionales {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* COMENTARIO DE ESTILOS DE EMAIL */
+div.content-email {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #7a3967;
+    background: url("../images/Copia-de-MH-TPP-1.png") center center no-repeat;
+    background-size: cover;
+
+
+    div.content-email-flex {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-email-flex {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        width: 60%;
+    }
+}
+
+p.eslogan-email {
+    font: 400 20px/27px 'poppins', sans-serif;
+    color: white;
+    text-align: center;
+    width: 80%;
+}
+
+img.img-logo-email {
+    margin-bottom: 20px;
+}
+
+/* FIN DE COMENTARIO DE ESTILOS DE EMAIL */
+
+/* COMENTARIO DE SECION VENDEDORES */
+div.grid-planificacion {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.item-planificacion-02 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+button.btn-planificacion {
+    margin: 5px auto;
+}
+
+/* FIN DE COMENTARIO DE SECION PLANIFICACION */
+
+/* COMENTARIO DE SECCION DE UBICACION */
+
+div.content-ubicacion {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: #f9fafb;
+}
+
+div.content-ubicacion-flex {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.item-ubicacion-01 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* FIN DE COMENTARIO DE SECCION DE UBICACION */
+
+/* COMENTARIO DE SECCION PLANIFICACION */
+div.c-grid-planificacion {
+    display: grid;
+    background-color: #ca9e67;
+    min-height: 550px;
+    border-radius: 20px;
+    grid-template-rows: 2.5fr 1fr;
+}
+
+div.g-planificacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+div.g-planificacion-img{
+    background: url("../images/TIENDA.jpg") center center no-repeat;
+    background-size: cover;
+    border-radius: 20px 20px 0px 0px;
+}
+
+h2.title-planificacion{
+    font: bold 35px/45px 'poppins', sans-serif;
+    color: #FFF;
+}
+
+p.descrip-planificacion{
+    font: 100 20px/25px 'poppins', sans-serif;
+    color: #FFF;
+}
+
+/* FIN DE COMENTARIO DE SECCION PLANIFICACION */
+
+/* COMENTARIO DE SECCION DE SERVICIOS */
+
+div.c-servicios{
+    background-color: #f9fafb;
+    min-height: 550px;
+}
+
+div.grid-servicios{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+div.item-servicios{
+    width: 100%;
+    background-color: #7a3967;
+    height: 100%;
+}
+
+/* FIN DE COMENTARIO DE SECCION DE SERVICIOS */
+
+/* COMENTARIO PORTADA PRINCIPAL */
+div.c-portada-principal{
+    background: url("../images/portada-principal.jpg") center center no-repeat;
+    min-height: calc(100vh - 100px);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+div.c-portada-principal::after{
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #7a396695;
+}
+
+div.c-p-principal{
+    display: grid;
+    gap: 2rem;
+    z-index: 99999999;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.item-portada{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+div.item-portada-img{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div.item-portada-img img{
+    border-radius: 50% 50%;
+    box-shadow: 0px 0px 150px #7a3967;
+}
+
+h1.title-portada{
+    font: bold 85px/95px 'poppins', sans-serif;
+    color: #FFF;
+}
+
+p.text-portada{
+    font: 100 18px/25px 'poppins', sans-serif;
+    color: #FFF;
+}
+
+/* FIN DE COMENTARIO PORTADA PRINCIPAL */

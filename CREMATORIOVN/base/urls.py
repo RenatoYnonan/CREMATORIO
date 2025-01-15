@@ -16,4 +16,10 @@ urlpatterns =[
     #BLOGS
     path('blogs', indexblog, name='blogs'),
     path('detail-blog/<slug:slug_post>/', detailblog, name='detail-blog'),
+
+    #CONVENIOS
+    path('convenios/', Convenios, name='convenios'),
+
+    #NOSOTROS
+    path('nosotros/', Nosotros, name='nosotros'),
 ]
