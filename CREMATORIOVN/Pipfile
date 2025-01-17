@@ -9,6 +9,8 @@ pillow = "*"
 python-slugify = "*"
 django-ckeditor = "*"
 django-tinymce = "*"
+weasyprint = "*"
+openpyxl = "*"
 
 [dev-packages]
 

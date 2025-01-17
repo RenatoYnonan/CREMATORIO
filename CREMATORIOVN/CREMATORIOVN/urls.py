@@ -35,5 +35,8 @@ urlpatterns = [
     #BLOGS POST
     path('blogs/', include(('blogs.urls', 'blogs'), namespace='blogs')),
 
+    #PROVEEDORES
+    path('proveedores/', include(('proveedores.urls', 'proveedores'), namespace='proveedores')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="flex-content-modal">
+    <h5 class="title-list-table">Lista de Proveedores</h5>
+    <div>
+        <a href="{%  url 'proveedores:create-proveedores' %}" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Nuevo Proveedor
+        </a>
+        <a href="{% url 'proveedores:exportar-proveedores-xml' %}" class="btn btn-primary">
+            <i class="fas fa-file-excel"></i> Exportar a Excel
+        </a>
+        <a href="{% url 'proveedores:exportar-proveedores' %}" class="btn btn-primary">
+            <i class="fas fa-file-pdf"></i> Exportar a PDF
+        </a>
+    </div>
+
+</div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Ocupación</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in proveedores %}
+        <tr>
+            <td>{{ i.name_proveedores | upper }}</td>
+            <td>{{ i.telephone }}</td>
+            <td>{{ i.ocupation | upper }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{ i.state }}</td>
+            <td class="td-actions">
+                <a href="{% url 'proveedores:update-proveedores' i.id %}">
+                    <i class="fa-solid fa-pencil"></i>
+                </a>
+                <a href="{% url 'proveedores:delete-proveedores' i.id %}">
+                    <i class="fa-solid fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">No hay proveedores registrados</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

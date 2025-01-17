@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'catalogo',
     'configuracion',
     'blogs',
+    'proveedores',
 
 ]
 

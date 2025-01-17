@@ -5,6 +5,9 @@ from django.core.paginator import Paginator
 
 from django.contrib import messages
 
+from django.template.loader import get_template
+from weasyprint import HTML
+
 from django.http import HttpResponseRedirect, HttpResponse
 from .models import *
 from .forms  import *
@@ -61,7 +64,34 @@ def DeleteProduct(request, id):
         form = FormsProduct(instance=data)
     
     return render(request, 'productos/index-delete.html', {'form': form})
+
+# GENERAR PDF PRODUCTOS
+def exportar_pdf(request):
+
+    html_string = get_template('productos/ticket.html')
+    context = {
+        'pds': ModelsProduct.objects.all()  
+    } 
+
+    html = html_string.render(context)
+    pdf =  HTML(string=html).write_pdf()
+
+    response =  HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="ticket.pdf"'
+    return response
+
+    #obtiene el template html de la factura
+    #crea un contexto con todos los productos
+    #renderiza el template con el contexto
+    #convierte el html a pdf
+    #crea una respuesta con el pdf
+    #agrega un header para que el navegador lo abra directamente
+    #devuelve la respuesta
+
     
+
+
+
 
 # PLANES DE CREMACION 
 # - CREMACIÓN BASICA

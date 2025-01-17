@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <button class="btn btn-primary" type="submit">ELIMINAR</button>
+    <a class="btn btn-danger" href="{% url 'proveedores:list-proveedores' %}">CANCELAR ACCIÓN</a>
+</form>
+{% endblock %}
