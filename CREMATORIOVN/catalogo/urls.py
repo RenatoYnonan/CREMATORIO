@@ -22,9 +22,8 @@ urlpatterns = [
     path('update-planes-cremacion/<int:id>/', UpdatePlanes, name='update-planes'),
     #ELIMINAR PLANES
     path('delete-planes-crematorio/<int:id>/', DeletePlanes, name='delete-planes'),
-
-
     #EXPORTAR DATOS A PDF
-    path('exportar-pdf/', exportar_pdf, name='exportar_pdf'),
-
+    path('exportar-planes-pdf/', ExportarPlanesPdf, name='exportar_planes_pdf'),
+    #EXPORTAR DATOS A XML
+    path('exportar-planes-xml/', ExportarPlanesXML, name='exportar_planes_xml'),
 ]

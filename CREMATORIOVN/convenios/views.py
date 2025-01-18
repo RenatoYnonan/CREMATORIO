@@ -22,6 +22,34 @@ class ListInstituciones(ListView):
     context_object_name = 'instituciones'
     template_name = 'instituciones/index-instituciones.html'
 
+def CreateInstitucion(request):
+
+    if request.method == 'POST':
+        form  =  InstitucionesForm(request.POST, request.FILES) 
+        if form.is_valid():
+            form.save()
+            return redirect('convenios:list-instituciones')
+        else:
+            print(form.errors)
+    else:
+        form =  InstitucionesForm()
+    return render(request, 'instituciones/index-instituciones-forms.html', {'form': form})
+
+def UpdateInstitucion(request, id):
+    institucion =  get_object_or_404(ModelsInstitucion, id=id)
+
+    if request.method == 'POST':
+        form  =  InstitucionesForm(request.POST, request.FILES, instance=institucion)
+        if form.is_valid():
+            form.save()
+            return redirect('convenios:list-instituciones')
+        else:
+            print(form.errors)
+    else:
+        form =  InstitucionesForm(instance=institucion)
+    return render(request, 'instituciones/index-instituciones-forms.html', {'form': form})
+
+
 def DeleteInstitucion(request, id):
     institucion = get_object_or_404(ModelsInstitucion, id=id)   
 
@@ -30,7 +58,44 @@ def DeleteInstitucion(request, id):
         institucion.save()
         return redirect('convenios:list-instituciones')
 
-    return render(request, 'instituciones/index-instituciones-delete.html')
+    return render(request, 'instituciones/index-delete.html')
+
+def ExportarInstitucionesXML(request):
+    wb = Workbook()
+    ws = wb.active
+
+    ws['B1'] = 'REPORTE DE INSTITUCIONES'
+    ws.merge_cells('B1:C1')
+
+    ws['B2'] = 'NOMBRE INSTITUCION'
+    ws['C2'] = 'CIUDAD'
+
+    count = 3
+    for i in ModelsInstitucion.objects.all():
+        ws.cell(row=count, column=2).value = i.nombre_institucion
+        ws.cell(row=count, column=3).value = i.ciudad
+
+        count += 1
+
+    Reporte_Instituciones = "Crematorio_Reporte_Instituciones.xlsx"
+    response = HttpResponse(content_type = "aplication/ms-excel")
+    content = "attachment; filename = {0}".format(Reporte_Instituciones)
+    response['Content-Disposition'] = content
+    wb.save(response)
+
+    return response
+
+def ExportarInstitucionesPDF(request):
+    template =  get_template('instituciones/report_instituciones_pdf.html')
+    context =  {
+        'ins': ModelsInstitucion.objects.all()
+    }
+    html_render =  template.render(context)
+    pdf = HTML(string=html_render).write_pdf()
+
+    response =  HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'atachment; filename="instituciones.pdf"'
+    return response
 
 #FUNERARIAS
 

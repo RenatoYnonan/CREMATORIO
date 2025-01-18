@@ -8,9 +8,11 @@ from django.contrib import messages
 from django.template.loader import get_template
 from weasyprint import HTML
 
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, response
 from .models import *
 from .forms  import *
+
+from openpyxl import Workbook
 
 # Create your views here.
 def ListProductos(request):
@@ -147,3 +149,42 @@ def DeletePlanes(request, id):
     
     return render(request, 'planes/index-delete.html')
 
+
+def ExportarPlanesXML(request):
+
+    wd = Workbook()
+    ws = wd.active
+
+    ws['B1'] = 'REPORTE DE PLANES'
+    ws.merge_cells('B1:C1')
+
+    ws['B2'] = 'NOMBRE DEL PLAN'
+    ws['C2'] = 'DESCRIPCION DEL PLAN'
+    ws['D2'] = 'PRECIO DEL PLAN'
+
+    count = 3
+    for i in ModelsPlanes.objects.all():
+        ws.cell(row=count, column=2).value = i.name_plan
+        ws.cell(row=count, column=3).value = i.description_plan
+        ws.cell(row=count, column=4).value = i.price_plan
+
+        count += 1
+    response = HttpResponse(content_type = "aplication/ms-excel")
+    content = "attachment; filename = {0}".format("Crematorio_Reporte_Planes.xlsx")
+    response['Content-Disposition'] = content
+    wd.save(response)
+
+    return response
+    
+
+def ExportarPlanesPdf(request):
+    template_planes = get_template('planes/report_planes_pdf.html')
+    context ={
+        'planes': ModelsPlanes.objects.all()
+    }
+    html_render =  template_planes.render(context)
+    template_pdf = HTML(string=html_render).write_pdf()
+
+    response =  HttpResponse(template_pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'atachment; filename="planes.pdf"'
+    return response

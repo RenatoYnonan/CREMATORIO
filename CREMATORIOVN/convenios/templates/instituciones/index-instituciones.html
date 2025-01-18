@@ -5,10 +5,15 @@
         <div class="flex-content-modal">
             <h5 class="title-list-table">Listado de Instituciones</h5>
             <div>
-                <a href="#" class="btn btn-primary">
+                <a href="{% url 'convenios:create-instituciones' %}" class="btn btn-primary">
                     NUEVA INSTITUCIÓN
                 </a>
-                <a href="" class="btn btn-secondary">Exportar a Excel</a>
+                <a href="{% url 'convenios:exportar-instituciones-xml' %}" class="btn btn-primary">
+                    <i class="fas fa-file-excel"></i> Exportar a Excel
+                </a>
+                <a href="{% url 'convenios:exportar-instituciones-pdf' %}" class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i> Exportar a PDF
+                </a>
             </div>
         </div>
 
@@ -35,7 +40,7 @@
                     <td class="td-item">{{ i.ciudad }}</td>
                     <td class="td-item">{{ i.estado }}</td>
                     <td class="td-actions">
-                        <a href=""><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{% url 'convenios:update-instituciones' i.id %}"><i class="fa-solid fa-pencil"></i></a>
                         <a href="{% url 'convenios:delete-instituciones' i.id %}"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>

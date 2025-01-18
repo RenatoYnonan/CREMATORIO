@@ -5,6 +5,10 @@ urlpatterns = [
     #INSTITUCIONES
     path('list-instituciones/', ListInstituciones.as_view(), name='list-instituciones' ),
     path('list-instituciones/delete/<int:id>', DeleteInstitucion , name='delete-instituciones'),
+    path('create-instituciones/', CreateInstitucion , name='create-instituciones'),
+    path('update-instituciones/<int:id>/', UpdateInstitucion , name='update-instituciones'),
+    path('exportar-instituciones-xml/', ExportarInstitucionesXML, name='exportar-instituciones-xml'),
+    path('exportar-instituciones-pdf/', ExportarInstitucionesPDF, name='exportar-instituciones-pdf'),
 
     #FUNERARIAS
     path('list-funerarias/', ListFunerarias.as_view(), name='list-funerarias' ),

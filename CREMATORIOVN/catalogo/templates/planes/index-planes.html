@@ -5,8 +5,8 @@
             <h5 class="title-list-table">Listado de Planes</h5>
             <div>
                 <a href="{% url 'catalogo:create-planes' %}" class="btn  btn-primary" ><i class="fa-solid fa-circle-plus"></i> Agregar Plan</a>
-                <a href="#" class="btn btn-primary"><i class="fa-solid fa-file-csv"></i> Exportar a Excel</a>
-                <a class="btn btn-primary"  href="#"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
+                <a href="{% url 'catalogo:exportar_planes_xml' %}" class="btn btn-primary"><i class="fa-solid fa-file-csv"></i> Exportar a Excel</a>
+                <a class="btn btn-primary"  href="{% url 'catalogo:exportar_planes_pdf' %}"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
             </div>
         </div>
 
