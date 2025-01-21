@@ -3,9 +3,10 @@ from django.utils.text import  slugify
 from tinymce.models import HTMLField
 
 
+
 # Create your models here.
 class BlogPost(models.Model):
-    image_post = models.ImageField(verbose_name='Imagen', upload_to='Imagenes Blogs')
+    image_post = models.ImageField(verbose_name='Imagen', upload_to='Imagenes Blogs', blank=True, null=True)
     title_post = models.CharField(max_length=255, verbose_name='Titulo Post')
     descriptions_post = models.TextField()
     content_post = HTMLField(verbose_name='Contenido')
@@ -14,10 +15,9 @@ class BlogPost(models.Model):
     is_published = models.BooleanField(default=True, verbose_name='Estado Publicación')
 
     def __str__(self):
-        return super().__str__()
+        return self.title_post
     
     def save(self, *args, **kwargs):
-
         if not self.slug_post:
             self.slug_post = slugify(self.title_post)
         return super().save(*args, **kwargs)

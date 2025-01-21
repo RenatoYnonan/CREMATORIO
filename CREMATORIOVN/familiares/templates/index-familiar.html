@@ -5,11 +5,11 @@
         <div class="flex-content-modal">
             <h5 class="title-list-table">Listado de Familiares</h5>
             <div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" sdata-target="#exampleModal">
+                <a  class="btn btn-primary" href="{% url 'familiares:create-familiares' %}"  >
                     <i class="fa-solid fa-circle-plus"></i> Agregar Familiar
-                  </button>
+                </a>
                 <a href="{% url 'familiares:export-familiares' %}" class="btn btn-primary"><i class="fa-solid fa-file-csv"></i> Exportar a Excel</a>
-                <a class="btn btn-primary"  href="#"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
+                <a class="btn btn-primary"  href="{% url 'familiares:pdf-familiares' %}"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
             </div>
         </div>
 
@@ -23,6 +23,7 @@
                     <th scope="col">N°. Celular</th>
                     <th scope="col">Ciudad</th>
                     <th scope="col">Género</th>
+                    <th scope="col">Estado</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -33,10 +34,12 @@
                     <td>{{ i.name }} {{ i.lastname}}</td>
                     <td>{{ i.telephone }}</td>
                     <td>{{ i.city.upper  }}</td>
+                    
                     <td><span class=" {% if i.gender == 'M' %}  span-gender-male {% else%} span-gender-female {% endif %} ">{{ i.get_gender_display       }}</span></td>
+                    <td>{{ i.estado }}</td>
                     <td class="td-actions">
                         <a href="{% url 'familiares:update-familiares' i.pk %}"><i class="fa-solid fa-pencil"></i></a>
-                        <a href=""><i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'familiares:delete-familiares' i.pk %}"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -44,34 +47,6 @@
         </table>
         {% endif %}
     </div>
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post" >
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">GUARDAR</button>
-                </form>
-            </div>  
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div>
-
 {% endblock %}
 
 

@@ -44,24 +44,18 @@ span.span-gender-female {
 
 td.td-actions{
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
 }
 
-i.fa-pencil{
-    background-color: #27ae60;
-}
 
 i.fa-cross, i.fa-eye{
     background-color: #866ec7 ;
 }
 
-i.fa-trash{
-    background-color: var(--gender-female);
-}
 
-i.fa-pencil,
-i.fa-trash,
+
+
 i.fa-eye,
 i.fa-cross{
     height: 30px;

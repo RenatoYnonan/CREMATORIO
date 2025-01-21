@@ -1,3 +1,4 @@
+from os import error
 from django.shortcuts import render
 from django.views.generic import *
 from .models import *
@@ -8,6 +9,12 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from openpyxl import Workbook
 from django.http import HttpResponseRedirect, HttpResponse
+
+
+from django.template.loader import get_template
+
+#WEASYPRINT
+from weasyprint import HTML
 
 # Create your views here.
 class ListFamily(TemplateView):
@@ -40,6 +47,31 @@ class FamiliarUpdate(UpdateView):
     form_class = FamiliaresForms
     template_name = 'index-form-familiar.html'
     success_url =  reverse_lazy('familiares:list-familiares')
+
+def CreateFamiliar(request):
+    if request.method == 'POST':
+        form = FamiliaresForms(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('familiares:list-familiares')
+    else:
+        form = FamiliaresForms()
+    return render(request, 'index-form-familiar.html', {'form': form})
+
+def DeleteFamiliar(request, pk):
+    familiares = get_object_or_404(ModelsFamiliar, pk=pk)
+    if request.method == 'POST':
+        if familiares.estado == True:
+            familiares.estado = False
+            familiares.save()
+            return redirect('familiares:list-familiares')
+        else:
+            familiares.estado = True
+            familiares.save()
+            return redirect('familiares:list-familiares')
+    else:
+        return redirect('familiares:list-familiares')
+    return render(request, 'index-delete-familiar.html')
     
 
 
@@ -69,3 +101,15 @@ class ReporteExcel(TemplateView):
         wb.save(response)
 
         return response
+
+def ReportePDF(request):
+    template =  get_template('report_familiares_pdf.html')
+    context =  {
+        'fam': ModelsFamiliar.objects.all()
+    }
+    html_render =  template.render(context)
+    pdf = HTML(string=html_render).write_pdf()
+
+    response =  HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="familiares.pdf"'
+    return response

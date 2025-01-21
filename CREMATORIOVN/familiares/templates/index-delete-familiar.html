@@ -1,9 +1,9 @@
+
 {% extends 'index.html' %}
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">{% if object %}ACTUALIZAR {% else %} GUARDAR CAMBIOS {% endif %}</button>
+    <button type="submit" class="btn btn-primary">ELIMINAR</button>
     <a class="btn btn-danger" href="{% url 'familiares:list-familiares' %}">CANCELAR ACCIÓN</a>
 </form>
 
