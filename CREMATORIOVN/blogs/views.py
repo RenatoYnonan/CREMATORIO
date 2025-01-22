@@ -1,5 +1,7 @@
 from os import error
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+
 from .models import *
 
 from django.urls import reverse_lazy
@@ -10,7 +12,12 @@ from django.views.generic import *
 # Create your views here.
 def ListBlog(request):
     obj_blog =  BlogPost.objects.all()
-    return render(request, 'index-blog.html', {'obj_blog': obj_blog})
+    paginator =  Paginator(obj_blog, 6)
+
+    num_page = request.GET.get('page')
+    page_obj = paginator.get_page(num_page)
+
+    return render(request, 'index-blog.html', {'page_obj':  page_obj})
 
 class CreateBlog(CreateView):
     model =  BlogPost

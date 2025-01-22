@@ -20,6 +20,7 @@ from weasyprint import HTML
 class ListInstituciones(ListView):
     model = ModelsInstitucion
     context_object_name = 'instituciones'
+    paginate_by = 6
     template_name = 'instituciones/index-instituciones.html'
 
 def CreateInstitucion(request):
@@ -101,6 +102,7 @@ def ExportarInstitucionesPDF(request):
 
 class ListFunerarias(ListView):
     model = ModelsFunerarias
+    paginate_by = 6
     context_object_name = 'funerarias'
     template_name = 'funerarias/index-funerarias.html'
 

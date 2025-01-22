@@ -18,25 +18,47 @@
             <th scope="col">F. Nacimiento</th>
             <th scope="col">F. Fallecido</th>
             <th scope="col">Género</th>
+            <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        {% for i in fallecidos %}
+        {% for i in page_obj %}
         <tr>
             <td>{{ i.nombre_completo }} {{ i.apellido }}</td>
 
             <td>{{ i.fecha_nacimiento }}</td>
             <td>{{ i.fecha_fallecido }}</td>
+            <td>{% if i.state   %} Activo {% else%} Inactivo {% endif %}</td>
             <td><span class=" {% if i.genero == 'M' %}  span-gender-male {% else%} span-gender-female {% endif %} ">{{ i.get_genero_display|upper }}</span></td>
             <td class="td-actions">
                 <a href="{% url 'fallecidos:update-deceased' i.id %}"><i class="fa-solid fa-pencil"></i></a>
                 <a href=""><i class="fa-solid fa-trash"></i></a>
-                <a href="{% url 'fallecidos:condolencias' i.pk %}"><i class="fa-regular fa-message"></i></a>
+                <a href=""><i class="fa-regular fa-message"></i></a>
             </td>
         </tr>
         {% endfor %}
+        
     </tbody>
 </table>
+
+<div class="pagination d-flex justify-content-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="pagination-item"><i class="fa-solid fa-caret-left"></i></a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"> {{ page_obj.previous_page_number }}</a>
+        {% endif %}
+
+        <span class="current pagination-item">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">{{ page_obj.next_page_number }}</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-item"><i class="fa-solid fa-caret-right"></i></a>
+        {% endif %}
+    </span>
+</div>
+
 
 {% endblock %}

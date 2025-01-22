@@ -50,7 +50,16 @@
 					</li>
 
 					<li>
-						<a href="{% url 'fallecidos:fallecidos' %}">Fallecidos</a>
+						<a href="#FallecidosMenu" data-toggle="collapse" aria-expanded="false"
+							class="dropdown-toggle">Fallecidos</a>
+						<ul class="collapse list-unstyled" id="FallecidosMenu">
+							<li>
+								<a href="{% url 'fallecidos:fallecidos' %}">Fallecidos</a>
+							</li>
+							<li>
+								<a href="#">Condolencias</a>
+							</li>
+						</ul>
 					</li>
 					<li>
 						<a href="{% url 'blogs:list-blogs' %}">Blogs</a>
@@ -59,9 +68,9 @@
 						<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
 					</li>
 					<li>
-						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+						<a href="#CatalogoMenu" data-toggle="collapse" aria-expanded="false"
 							class="dropdown-toggle">Catalogo</a>
-						<ul class="collapse list-unstyled" id="homeSubmenu">
+						<ul class="collapse list-unstyled" id="CatalogoMenu">
 							<li>
 								<a href="{% url 'catalogo:list-product' %}">Productos</a>
 							</li>
@@ -71,9 +80,9 @@
 						</ul>
 					</li>
 					<li>
-						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
+						<a href="#ConveniosMenu" data-toggle="collapse" aria-expanded="false"
 							class="dropdown-toggle">Convenios</a>
-						<ul class="collapse list-unstyled" id="homeSubmenu">
+						<ul class="collapse list-unstyled" id="ConveniosMenu">
 							<li>
 								<a href="{% url 'convenios:list-instituciones' %}">Instituciones</a>
 							</li>

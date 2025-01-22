@@ -4,6 +4,8 @@ from django.views.generic import *
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
+from django.core.paginator import Paginator
+
 #IMPORTACIONES 
 from .models import *
 from .forms import *
@@ -64,19 +66,9 @@ class ReporteFallecido(TemplateView):
 
 class Fallecidos(ListView):
     model = Fallecido
-    context_object_name = 'fallecidos'
+    paginate_by = 6
     template_name = 'index_fallecido.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        fallecido_id = self.kwargs.get('pk')
-        if fallecido_id: 
-            context['condolencias'] = Condolencias.objects.filter(nombre_fallecido_id=fallecido_id)
-            context['count'] =  Condolencias.objects.count()
-        else:
-            context['condolencias'] = None
-
-        return context
 
 class CreateDeceased(CreateView):
     model = Fallecido

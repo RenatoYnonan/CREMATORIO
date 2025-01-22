@@ -1,21 +1,17 @@
 {% extends 'index.html' %}
 {% block content %}
+<h5 class="">Listado de Familiares</h5>
 
-    <div>
         <div class="flex-content-modal">
-            <h5 class="title-list-table">Listado de Familiares</h5>
+            <a  class="btn btn-primary" href="{% url 'familiares:create-familiares' %}"  >
+                <i class="fa-solid fa-circle-plus"></i> Agregar Familiar
+            </a>
             <div>
-                <a  class="btn btn-primary" href="{% url 'familiares:create-familiares' %}"  >
-                    <i class="fa-solid fa-circle-plus"></i> Agregar Familiar
-                </a>
-                <a href="{% url 'familiares:export-familiares' %}" class="btn btn-primary"><i class="fa-solid fa-file-csv"></i> Exportar a Excel</a>
-                <a class="btn btn-primary"  href="{% url 'familiares:pdf-familiares' %}"><i class="fa-solid fa-file-pdf"></i> Exportar a PDF</a>
+                <a href="{% url 'familiares:export-familiares' %}" class="btn btn-outline-primary"><i class="fa-solid fa-file-arrow-down"></i>  Excel</a>
+                <a class="btn btn-outline-primary"  href="{% url 'familiares:pdf-familiares' %}"><i class="fa-solid fa-file-arrow-down"></i> PDF</a>
             </div>
         </div>
-
-        {% if not familiares %}
-        <span>&nbsp;&nbsp;&nbsp;No hay datos para mostrar</span>
-        {% else %}
+        <br>
         <table class="table table-striped table-hover">
             <thead>
                 <tr>     
@@ -29,24 +25,46 @@
             </thead>
             <tbody>
                 
-                {% for i in familiares %}
+                {% for i in page_obj %}
                 <tr>
                     <td>{{ i.name }} {{ i.lastname}}</td>
                     <td>{{ i.telephone }}</td>
                     <td>{{ i.city.upper  }}</td>
                     
                     <td><span class=" {% if i.gender == 'M' %}  span-gender-male {% else%} span-gender-female {% endif %} ">{{ i.get_gender_display       }}</span></td>
-                    <td>{{ i.estado }}</td>
+                    <td>{% if i.estado   %} Activo {% else%} Inactivo {% endif %}</td>
                     <td class="td-actions">
                         <a href="{% url 'familiares:update-familiares' i.pk %}"><i class="fa-solid fa-pencil"></i></a>
                         <a href="{% url 'familiares:delete-familiares' i.pk %}"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No hay datos para mostrar</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
-        {% endif %}
-    </div>
+        <div class="pagination d-flex justify-content-center">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1" class="pagination-item"><i class="fa-solid fa-caret-left"></i></a>
+                    <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"> {{ page_obj.previous_page_number }}</a>
+                {% endif %}
+        
+                <span class="current pagination-item">
+                    {{ page_obj.number }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">{{ page_obj.next_page_number }}</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-item"><i class="fa-solid fa-caret-right"></i></a>
+                {% endif %}
+            </span>
+        </div>
+        
+
+
 {% endblock %}
 
 

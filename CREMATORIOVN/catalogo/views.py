@@ -17,7 +17,7 @@ from openpyxl import Workbook
 # Create your views here.
 def ListProductos(request):
     product = ModelsProduct.objects.all()
-    pag = Paginator(product, 8)
+    pag = Paginator(product, 6)
     page_number = request.GET.get('page')
 
     page_obj =  pag.get_page(page_number)
@@ -90,7 +90,31 @@ def exportar_pdf(request):
     #agrega un header para que el navegador lo abra directamente
     #devuelve la respuesta
 
-    
+def ExportarXML(request):
+    ws = Workbook()
+    wd = ws.active
+    wd['B1'] = 'REPORTE DE PRODUCTOS'
+    wd.merge_cells('B1:D1')
+
+    wd['B2'] = 'NOMBRE DEL PRODUCTO'
+    wd['C2'] = 'DESCRIPCION DEL PRODUCTO'
+    wd['D2'] = 'PRECIO DEL PRODUCTO'
+
+    count = 3
+
+    for i in ModelsProduct.objects.all():
+        wd.cell(row=count, column=2).value = i.name_product
+        wd.cell(row=count, column=3).value = i.descriptions_product
+        wd.cell(row=count, column=4).value = i.price_product
+
+        count += 1
+
+    response = HttpResponse(content_type = "aplication/ms-excel")
+    content = "attachment; filename = {0}".format("Crematorio_Reporte_Productos.xlsx")
+    response['Content-Disposition'] = content
+    ws.save(response)
+
+    return response
 
 
 
@@ -102,8 +126,12 @@ def exportar_pdf(request):
 
 def ListPlanes(request): #listar datos
     obj_plan = ModelsPlanes.objects.all()
-    
-    return render(request, 'planes/index-planes.html', {'obj_plan': obj_plan})
+
+    pagination =  Paginator(obj_plan, 6)
+    page_number = request.GET.get('page')
+    page_obj =  pagination.get_page(page_number)
+
+    return render(request, 'planes/index-planes.html', {'page_obj': page_obj})
 
 def CreatePlan(request):
     if request.method == 'POST':

@@ -14,13 +14,6 @@ div.content-grid-layoud {
     gap: 2rem;
 }
 
-h5.title-list-table {
-    background-color: #866ec7;
-    color: #FFF;
-    width: max-content;
-    padding: 10px;
-    border-radius: 20px;
-}
 
 td.td-item{
     vertical-align: middle;
@@ -131,18 +124,7 @@ div.item-condolencias-01{
     mask-image: linear-gradient(#7a3967 0%, transparent 100%);
 }
 
-div.flex-fallecio{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
 
-    h5{
-        color: #FFF;
-        font: bold 25px/30px 'poppins',sans-serif;
-        margin: 0px;
-    }
-}
 
 .fa-qrcode{
     font-size: 40px;
@@ -258,3 +240,20 @@ label{
         gap: 0.5rem;
     }
 } */
+
+/* PAGINACION */
+
+.pagination-item {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f1f1f1;
+    margin: 0 5px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.pagination-item:hover {
+    background-color: #ddd;
+}

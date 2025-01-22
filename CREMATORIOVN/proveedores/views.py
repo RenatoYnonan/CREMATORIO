@@ -1,3 +1,4 @@
+from django.core import paginator
 from django.forms.renderers import get_template
 from django.shortcuts import render, redirect
 from .models import *
@@ -10,14 +11,19 @@ from django.http import HttpResponse
 #WEASYPRINT
 from weasyprint import HTML
 
+from django.core.paginator import Paginator
+
 #OPENPYXL
 from openpyxl import Workbook
 
 
 # Create your views here.
 def ListProveedores(request):
-    context_provedores =  ProveedoresModels.objects.all() 
-    return render(request, 'index-proveedores.html', {'proveedores': context_provedores})
+    context_provedores =  ProveedoresModels.objects.all()
+    paginator = Paginator(context_provedores, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number) 
+    return render(request, 'index-proveedores.html', {'page_obj': page_obj})
 
 def CreateProveedores(request):
     form =  ProveedorForm(request.POST) 

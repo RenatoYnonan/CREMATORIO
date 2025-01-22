@@ -2,23 +2,22 @@
 {% load static %}
 
 {% block content %}
-
+<h5 class="title-list-table">Lista de Proveedores</h5>
 <div class="flex-content-modal">
-    <h5 class="title-list-table">Lista de Proveedores</h5>
+    <a href="{%  url 'proveedores:create-proveedores' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Nuevo Proveedor
+    </a>
     <div>
-        <a href="{%  url 'proveedores:create-proveedores' %}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Nuevo Proveedor
+        <a href="{% url 'proveedores:exportar-proveedores-xml' %}" class="btn btn-outline-primary">
+            <i class="fa-solid fa-file-arrow-down"></i> Excel
         </a>
-        <a href="{% url 'proveedores:exportar-proveedores-xml' %}" class="btn btn-primary">
-            <i class="fas fa-file-excel"></i> Exportar a Excel
-        </a>
-        <a href="{% url 'proveedores:exportar-proveedores' %}" class="btn btn-primary">
-            <i class="fas fa-file-pdf"></i> Exportar a PDF
+        <a href="{% url 'proveedores:exportar-proveedores' %}" class="btn btn-outline-primary">
+            <i class="fa-solid fa-file-arrow-down"></i> PDF
         </a>
     </div>
 
 </div>
-
+<br>
 
 <table class="table table-hover">
     <thead>
@@ -32,13 +31,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for i in proveedores %}
+        {% for i in page_obj %}
         <tr>
             <td>{{ i.name_proveedores | upper }}</td>
             <td>{{ i.telephone }}</td>
             <td>{{ i.ocupation | upper }}</td>
             <td>{{ i.price }}</td>
-            <td>{{ i.state }}</td>
+            <td>{% if i.state   %} Activo {% else%} Inactivo {% endif %}</td>
             <td class="td-actions">
                 <a href="{% url 'proveedores:update-proveedores' i.id %}">
                     <i class="fa-solid fa-pencil"></i>
@@ -55,6 +54,25 @@
         {% endfor %}
     </tbody>
 </table>
+<div class="pagination d-flex justify-content-center">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1" class="pagination-item"><i class="fa-solid fa-caret-left"></i></a>
+        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"> {{ page_obj.previous_page_number
+            }}</a>
+        {% endif %}
+
+        <span class="current pagination-item">
+            {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">{{ page_obj.next_page_number }}</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-item"><i
+                class="fa-solid fa-caret-right"></i></a>
+        {% endif %}
+    </span>
+</div>
 
 
 {% endblock %}

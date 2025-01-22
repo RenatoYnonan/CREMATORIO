@@ -16,7 +16,12 @@ class Fallecido(models.Model):
     fecha_fallecido = models.DateField()
     genero =  models.CharField(choices=GENERO, max_length=1, default='M')
     documento_identidad =  models.CharField(choices=DOCUMENTO,max_length=3, default='DNI')
+    state = models.BooleanField(default=True, verbose_name='Estado')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Fallecido'
+        verbose_name_plural = 'Fallecidos'
 
 class Condolencias(models.Model):
     nombre_fallecido = models.ForeignKey(Fallecido, on_delete=models.CASCADE, related_name='fallecido')
@@ -24,3 +29,7 @@ class Condolencias(models.Model):
     descripcion = models.CharField(max_length=255)
     nombre_familiar = models.CharField(max_length=155)
     fecha_creacion = models.DateTimeField(default=timezone.now, null=False, blank=False)
+
+    class Meta:
+        verbose_name = 'Condolencia'
+        verbose_name_plural = 'Condolencias'

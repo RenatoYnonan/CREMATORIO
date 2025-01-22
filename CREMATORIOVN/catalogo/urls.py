@@ -11,6 +11,11 @@ urlpatterns = [
     path('update-product/<int:id>', UpdateProduct, name='update-product'),
     #ELIMINAR PRODUCTOS
     path('delete-product/<int:id>', DeleteProduct, name='delete-product'),
+    #EXPORTAR DATOS A PDF
+    path('exportar-productos-pdf/', exportar_pdf, name='exportar_productos_pdf'),
+    #EXPORTAR DATOS A XML
+    path('exportar-productos-xml/', ExportarXML, name='exportar_productos_xml'),
+
 
     #PLANES DE CREMACION
 

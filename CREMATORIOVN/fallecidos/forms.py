@@ -13,6 +13,12 @@ class FallecidosForms(forms.ModelForm):
         for field_a, field_b in self.fields.items():
             field_b.widget.attrs['class'] = 'form-control'
 
+            if field_a == 'fecha_nacimiento' or field_a == 'fecha_fallecido':
+                field_b.widget = forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control'
+            })
+
 
 class CondolenciaForms(forms.ModelForm):
     class Meta:
