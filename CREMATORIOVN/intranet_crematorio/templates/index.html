@@ -9,9 +9,12 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
-	<!-- FORMULARIOS -->
-	<link rel="stylesheet" href="{% static 'css/style-css-form.css' %}">
-	<!-- FINALIZAR FORMULARIO -->
+	{# nota: ESTILOS DEL LOGIN #}
+	<link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+
+	{# nota: ESTILOS FORMULARIOS #}
+	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -35,6 +38,7 @@
 <body>
 
 	<div class="wrapper d-flex align-items-stretch">
+		{% block sidebar %}
 		<nav id="sidebar">
 			<div class="custom-menu">
 				<button type="button" id="sidebarCollapse" class="btn btn-primary">
@@ -118,12 +122,19 @@
 
 			</div>
 		</nav>
+		{% endblock %}
 
 		<!-- Page Content  -->
+		 {% block c-principal %} 
 		<div id="content" class="p-4 p-md-5 pt-5">
 			{% block content %} {% endblock %}
 		</div>
+		{% endblock %}
 	</div>
+	<div class="login-div-container">
+		{% block login-content %} {% endblock %}
+	</div>
+
 
 	<script src="{% static  'js/jquery.min.js'%}"></script>
 	<script src="{% static 'js/popper.js' %}"></script>
