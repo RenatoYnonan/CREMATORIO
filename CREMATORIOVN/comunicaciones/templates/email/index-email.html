@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content-style %}
+{# nota: ESTILOS DE EMAIL-SMS #}
+<link rel="stylesheet" href="{% static 'css/style-email-sms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-email">
+    <div class="content-email-flex-01">
+        {# nota : listado de Personas #}
+        <div class="content-email-flex">
+            <img src="{% static 'images/AVATARS/images.png' %}" alt="" height="50px" width="50px">
+            <div>
+                <h6>Luis Perez Tapullima</h6>
+                <p>Lorem Ipsum</p>
+            </div>
+        </div>
+    </div>
+    <div class="content-email-flex-02">
+        {# nota : Envio de Correos #}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -15,6 +15,13 @@
 	{# nota: ESTILOS FORMULARIOS #}
 	<link rel="stylesheet" href="{% static 'css/login.css' %}">
 
+	
+	{% block content-style %}
+
+
+	{% endblock %}
+
+
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -63,14 +70,15 @@
 							<li>
 								<a href="#">Condolencias</a>
 							</li>
+							<li>
+								<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
+							</li>
 						</ul>
 					</li>
 					<li>
 						<a href="{% url 'blogs:list-blogs' %}">Blogs</a>
 					</li>
-					<li>
-						<a href="{% url 'familiares:list-familiares' %}">Familiares</a>
-					</li>
+					
 					<li>
 						<a href="#CatalogoMenu" data-toggle="collapse" aria-expanded="false"
 							class="dropdown-toggle">Catalogo</a>
@@ -91,21 +99,32 @@
 								<a href="{% url 'convenios:list-instituciones' %}">Instituciones</a>
 							</li>
 							<li>
+								<a href="{% url 'proveedores:list-proveedores' %}">Proveedores</a>
+							</li>
+							<li>
 								<a href="{% url  'convenios:list-funerarias' %}">Funerarias</a>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="{% url 'proveedores:list-proveedores' %}">Proveedores</a>
-					</li>
-					<li>
 						<a href="{% url 'familiares:list-familiares' %}">Enviar Mensaje SMS</a>
 					</li>
 					<li>
-						<a href="{% url 'familiares:list-familiares' %}">Enviar Correos</a>
+						<a href="{% url 'comunicaciones:email_index' %}">Enviar Correos</a>
 					</li>
+					
 					<li>
-						<a href="{% url 'configuracion:config-company' 1 %}">Configuración</a>
+						<a href="#ConfigMenu" data-toggle="collapse" aria-expanded="false"
+							class="dropdown-toggle">Configuración</a>
+						<ul class="collapse list-unstyled" id="ConfigMenu">
+							<li>
+								<a href="{% url 'configuracion:config-company' 1 %}">Configuración</a>
+							</li>
+							<form method="post" action="{% url 'intranet-crematorio:logout' %}">
+								{% csrf_token %}
+								<button type="submit" style="background-color: transparent; border: none; color: white;">Cerrar sesión</button>
+							</form>
+						</ul>
 					</li>
 				</ul>
 
@@ -131,9 +150,9 @@
 		</div>
 		{% endblock %}
 	</div>
-	<div class="login-div-container">
+
 		{% block login-content %} {% endblock %}
-	</div>
+
 
 
 	<script src="{% static  'js/jquery.min.js'%}"></script>
