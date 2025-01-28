@@ -8,7 +8,23 @@
 {% block content %}
 <div class="content-email">
     <div class="content-email-flex-01">
+        {#  nota : Buscador #}
+        <div class="email-search-flex">
+            <div style="width: 100%;">
+                <input type="search" placeholder="Buscar" class="form-control">
+            </div>
+            <i class="fa-solid fa-circle-plus"></i>
+
+        </div>
+
         {# nota : listado de Personas #}
+        <div class="content-email-flex">
+            <img src="{% static 'images/AVATARS/images.png' %}" alt="" height="50px" width="50px">
+            <div>
+                <h6>Luis Perez Tapullima</h6>
+                <p>Lorem Ipsum</p>
+            </div>
+        </div>
         <div class="content-email-flex">
             <img src="{% static 'images/AVATARS/images.png' %}" alt="" height="50px" width="50px">
             <div>
@@ -19,6 +35,21 @@
     </div>
     <div class="content-email-flex-02">
         {# nota : Envio de Correos #}
+
+        <h5>Contenido del Correo</h5>
+        <form action="">
+            <div>
+                <label for="">Asunto</label>
+                <input type="text" placeholder="Asunto" class="form-control">
+            </div>
+            <br>
+            <div>
+                <label for="">Cuerpo</label>
+                <textarea class=" textarea-form" name="" id=""></textarea>
+            </div>
+            <button class="btn btn-primary">Enviar Correo</button>
+
+        </form>
 
     </div>
 </div>
