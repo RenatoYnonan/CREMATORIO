@@ -151,3 +151,6 @@ TINYMCE_DEFAULT_CONFIG = {
     "toolbar": "undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image media | code",
     "image_advtab": True,
 }
+
+LOGIN_REDIRECT_URL = '/intranet-crematorio/'
+LOGOUT_REDIRECT_URL = 'intranet-crematorio:login'

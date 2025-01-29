@@ -1,10 +1,17 @@
-from django.shortcuts import render
+from re import template
+from django.shortcuts import render, redirect
 from django.views.generic import *
 
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.core.paginator import Paginator
+
+from django.template.loader import get_template
+
+from weasyprint import HTML
 
 #IMPORTACIONES 
 from .models import *
@@ -62,28 +69,50 @@ class ReporteFallecido(TemplateView):
 
         return response
 
+def ReporteFallecidoPDF(request):
+    template = get_template('index_pdf.html')
+    exfallecido =  {
+        'fallecido': Fallecido.objects.all()
+    }
+    
+    html = template.render(exfallecido)
+    pdf = HTML(string=html).write_pdf()
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="fallecido.pdf"'
+
+    return response
 
 
-class Fallecidos(ListView):
+class Fallecidos(LoginRequiredMixin, ListView):
     model = Fallecido
     paginate_by = 6
     template_name = 'index_fallecido.html'
 
 
-class CreateDeceased(CreateView):
+class CreateDeceased(LoginRequiredMixin, CreateView):
     model = Fallecido
     form_class = FallecidosForms
     template_name = 'index-fallecido-form.html'
     success_url =  reverse_lazy('fallecidos:fallecidos')
 
 
-class UpdateDeceased(UpdateView):
+class UpdateDeceased(LoginRequiredMixin, UpdateView):
     model = Fallecido
     form_class = FallecidosForms
     template_name = 'index-fallecido-form.html'
     success_url =  reverse_lazy('fallecidos:fallecidos')
 
-
+def DeleteDeceased(request, pk):
+    fallecido = Fallecido.objects.get(id=pk)
+    if request.method == 'POST':
+        if fallecido.state == True:
+            fallecido.state = False
+        else:
+            fallecido.state = True
+        fallecido.save()
+        return redirect('fallecidos:fallecidos')
+    return render(request, 'index-delete.html')
 
     
     

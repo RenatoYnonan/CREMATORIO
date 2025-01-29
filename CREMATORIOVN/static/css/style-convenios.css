@@ -196,6 +196,13 @@ div.item-portada-img{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+img.img-portada{
+    height: auto;
+    width: 100%;
+    object-fit: cover;
 }
 
 div.item-portada-img img{

@@ -14,7 +14,10 @@ from .forms  import *
 
 from openpyxl import Workbook
 
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required(login_url='intranet-crematorio:login')
 def ListProductos(request):
     product = ModelsProduct.objects.all()
     pag = Paginator(product, 6)
@@ -26,8 +29,8 @@ def ListProductos(request):
     return render(request, 'productos/index-productos.html', { 'page_obj': page_obj })
 
 
+@login_required(login_url='intranet-crematorio:login')
 def CreateProduct(request):
-
     if request.method == 'POST':
         form = FormsProduct(request.POST)
 
@@ -39,6 +42,7 @@ def CreateProduct(request):
     return render(request, 'productos/index-form.html', { 'form': form })
 
 
+@login_required(login_url='intranet-crematorio:login')
 def UpdateProduct(request, id):
     datos = get_object_or_404(ModelsProduct, id=id)
 
@@ -54,7 +58,7 @@ def UpdateProduct(request, id):
 
     return render(request, 'productos/index-form.html', {'form': form})
 
-
+@login_required(login_url='intranet-crematorio:login')
 def DeleteProduct(request, id):
     data = get_object_or_404(ModelsProduct, id=id)
 
@@ -124,6 +128,7 @@ def ExportarXML(request):
 # - CREMACION PREMIÚM 
 # - PLAN A FUTURO  
 
+@login_required(login_url='intranet-crematorio:login')
 def ListPlanes(request): #listar datos
     obj_plan = ModelsPlanes.objects.all()
 
@@ -133,6 +138,7 @@ def ListPlanes(request): #listar datos
 
     return render(request, 'planes/index-planes.html', {'page_obj': page_obj})
 
+@login_required(login_url='intranet-crematorio:login')
 def CreatePlan(request):
     if request.method == 'POST':
         form_plan = FormPlanes(request.POST)
@@ -146,7 +152,7 @@ def CreatePlan(request):
 
     return render(request, 'planes/index-form.html', {'form_plan': form_plan})
 
-
+@login_required(login_url='intranet-crematorio:login')
 def UpdatePlanes(request, id):
     
     obj_planes = get_object_or_404(ModelsPlanes, id=id)
@@ -163,6 +169,8 @@ def UpdatePlanes(request, id):
 
     return render(request, 'planes/index-form.html', {'form_plan': form_plan})
 
+
+@login_required(login_url='intranet-crematorio:login')
 def DeletePlanes(request, id):
     obj_planes = get_object_or_404(ModelsPlanes, id=id)
 

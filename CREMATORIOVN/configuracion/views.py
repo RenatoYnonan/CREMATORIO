@@ -8,9 +8,10 @@ from django.urls import reverse_lazy
 from .models import *
 from .forms import *
 from django.contrib import messages
-# Create your views here.
 
-class ConfiguracionEmpresa(UpdateView):
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+class ConfiguracionEmpresa(LoginRequiredMixin, UpdateView):
     model = CompanyConf
     form_class = FormCompany
     template_name = 'index-empresa.html'

@@ -15,6 +15,11 @@ from django.urls import reverse
 class PaginaPrincipal(TemplateView):
     template_name = 'index-crematorio.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        
+        context['planes'] =  ModelsPlanes.objects.all()
+        return context
 
 class MuralRecuerdo(ListView):
     model = Fallecido
@@ -94,3 +99,4 @@ def Convenios(request):
 #NOSOTROS
 def Nosotros(request):
     return render(request, 'nosotros/index-nosotros.html')
+

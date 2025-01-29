@@ -5,24 +5,27 @@ from .models import *
 from django.urls import reverse_lazy
 from .forms import *
 
+
+from django.contrib.auth.decorators import login_required
+
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect
 from openpyxl import Workbook
 from django.http import HttpResponseRedirect, HttpResponse
 
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template.loader import get_template
 
 #WEASYPRINT
 from weasyprint import HTML
 
 # Create your views here.
-class ListFamily(ListView):
+class ListFamily( LoginRequiredMixin,ListView):
     model = ModelsFamiliar
     paginate_by = 6
     template_name = 'index-familiar.html'
 
-
+@login_required(login_url='intranet-crematorio:login')
 def CreateFamiliar(request):
     if request.method == 'POST':
         form = FamiliaresForms(request.POST)
@@ -33,14 +36,14 @@ def CreateFamiliar(request):
         form = FamiliaresForms()
     return render(request, 'index-form-familiar.html', {'form': form})
 
-class FamiliarUpdate(UpdateView):
+class FamiliarUpdate(LoginRequiredMixin, UpdateView):
     model = ModelsFamiliar
     form_class = FamiliaresForms
     template_name = 'index-form-familiar.html'
     success_url =  reverse_lazy('familiares:list-familiares')
 
 
-
+@login_required(login_url='intranet-crematorio:login')
 def DeleteFamiliar(request, pk):
     familiares = get_object_or_404(ModelsFamiliar, pk=pk)
     if request.method == 'POST':

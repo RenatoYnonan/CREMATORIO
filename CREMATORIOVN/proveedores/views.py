@@ -16,15 +16,18 @@ from django.core.paginator import Paginator
 #OPENPYXL
 from openpyxl import Workbook
 
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
+@login_required(login_url='intranet-crematorio:login')
 def ListProveedores(request):
     context_provedores =  ProveedoresModels.objects.all()
     paginator = Paginator(context_provedores, 6)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number) 
     return render(request, 'index-proveedores.html', {'page_obj': page_obj})
-
+@login_required(login_url='intranet-crematorio:login')
 def CreateProveedores(request):
     form =  ProveedorForm(request.POST) 
     if form.is_valid():
@@ -34,6 +37,7 @@ def CreateProveedores(request):
         form =  ProveedorForm()
     return render(request, 'index-proveedores-form.html', {'form': form})
 
+@login_required(login_url='intranet-crematorio:login')
 def UpdateProveedores(request, id):
     proveedor = get_object_or_404(ProveedoresModels, id=id)
 
@@ -47,6 +51,7 @@ def UpdateProveedores(request, id):
 
     return render(request, 'index-proveedores-form.html', {'form': form})
 
+@login_required(login_url='intranet-crematorio:login')
 def DeleteProveedores(request, id):
     proveedor = get_object_or_404(ProveedoresModels, id=id)
 

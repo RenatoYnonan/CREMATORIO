@@ -15,14 +15,18 @@ from openpyxl import Workbook
 #WEASYPRNT
 from weasyprint import HTML
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
 
-class ListInstituciones(ListView):
+class ListInstituciones(LoginRequiredMixin, ListView):
     model = ModelsInstitucion
     context_object_name = 'instituciones'
     paginate_by = 6
     template_name = 'instituciones/index-instituciones.html'
 
+@login_required(login_url='intranet-crematorio:login')
 def CreateInstitucion(request):
 
     if request.method == 'POST':
@@ -36,6 +40,7 @@ def CreateInstitucion(request):
         form =  InstitucionesForm()
     return render(request, 'instituciones/index-instituciones-forms.html', {'form': form})
 
+@login_required(login_url='intranet-crematorio:login')
 def UpdateInstitucion(request, id):
     institucion =  get_object_or_404(ModelsInstitucion, id=id)
 
@@ -51,6 +56,7 @@ def UpdateInstitucion(request, id):
     return render(request, 'instituciones/index-instituciones-forms.html', {'form': form})
 
 
+@login_required(login_url='intranet-crematorio:login')
 def DeleteInstitucion(request, id):
     institucion = get_object_or_404(ModelsInstitucion, id=id)   
 
@@ -100,12 +106,13 @@ def ExportarInstitucionesPDF(request):
 
 #FUNERARIAS
 
-class ListFunerarias(ListView):
+class ListFunerarias(LoginRequiredMixin, ListView):
     model = ModelsFunerarias
     paginate_by = 6
     context_object_name = 'funerarias'
     template_name = 'funerarias/index-funerarias.html'
 
+@login_required(login_url='intranet-crematorio:login')
 def CreateFuneraria(request):
 
     if request.method == 'POST':
@@ -119,7 +126,7 @@ def CreateFuneraria(request):
         form =  FuneriasForm()
     return render(request, 'funerarias/index-funerarias-forms.html', {'form': form})
 
-
+@login_required(login_url='intranet-crematorio:login')
 def UpdateFuneraria(request, id):
     funeraria =  get_object_or_404(ModelsFunerarias, id=id)
 
@@ -134,7 +141,7 @@ def UpdateFuneraria(request, id):
         form =  FuneriasForm(instance=funeraria)
     return render(request, 'funerarias/index-funerarias-forms.html', {'form': form})
 
-
+@login_required(login_url='intranet-crematorio:login')
 def deleteFuneraria(request, id):
     funeraria = get_object_or_404(ModelsFunerarias, pk=id)
 
