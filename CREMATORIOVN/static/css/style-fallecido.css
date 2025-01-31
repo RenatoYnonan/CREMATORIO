@@ -3,6 +3,36 @@
     padding: 0px;
 }
 
+h2.title-ub-page{
+    font: bold 45px/60px 'poppins',sans-serif;
+    color: #7a3967;
+}
+
+h2.title-pc-page{
+    font: medium 45px/75px 'poppins',sans-serif;
+    color: #7a3967;
+}
+
+h2.title-pl-page{
+    color: #ca9e67;
+    font: bold 40px/50px 'poppins',sans-serif;
+    text-align: center;
+}
+
+
+p.text-ub-page,
+span.text-pl,
+p.text-pl{
+    color: #000;
+    font: 100 18px/30px 'poppins',sans-serif;
+    text-align: left;
+}
+
+span.text-pl > .fa-user{
+    color: #ca9e67;
+    font-size: 22px;
+}
+
 /* :root {
     --gender-male: #2980b9;
     --gender-female: #ec7063;
@@ -256,4 +286,12 @@ label{
 
 .pagination-item:hover {
     background-color: #ddd;
+}
+
+
+/* SERVICIOS */
+
+h4.title-plan-services{
+    font: medium 40px/50px 'poppins',sans-serif;
+    color: #FFF;
 }

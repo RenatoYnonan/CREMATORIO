@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="{% static 'css/style-store.css' %}">
     <link rel="stylesheet" href="{% static 'css/style-details-product.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/style-fq.css' %}">
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
@@ -26,13 +26,10 @@
 
     <!-- SLICK -->
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
 
-    <!-- JS de Slick -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
 </head>
 
 <body>
@@ -101,11 +98,34 @@
         {% endblock %}
     </main>
 
+    
+
 
     <script src="{% static  'js/jquery.min.js'%}"></script>
     <script src="{% static 'js/popper.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+
+    {#nota: estilos de js slick #}
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiple-items').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                dots: true,
+                autoplay: true,
+                centerMode: true,
+                autoplaySpeed: 5000,
+            });
+        });
+    </script>
 
 </body>
 

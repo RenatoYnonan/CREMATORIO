@@ -1,0 +1,22 @@
+details{
+    border: 1px solid #ccc;
+
+}
+
+summary{
+    color: #7a3967;
+    list-style: none;
+    padding: 10px 15px;
+    font: 500 18px/35px 'poppins',sans-serif;
+}
+
+summary:focus{
+    color: #ca9e67;
+}
+
+p.text-fq{
+    border-top: 1px solid #ccc;
+    font: 100 17px/35px 'poppins',sans-serif;
+    padding: 10px 15px;
+    color: #000;
+}

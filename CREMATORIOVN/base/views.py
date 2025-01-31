@@ -18,7 +18,7 @@ class PaginaPrincipal(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        context['planes'] =  ModelsPlanes.objects.all()
+        context['planes'] =  ModelsPlanes.objects.prefetch_related('planes').all()
         return context
 
 class MuralRecuerdo(ListView):

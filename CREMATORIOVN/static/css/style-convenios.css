@@ -67,16 +67,11 @@ div.item-planificacion-02 {
     align-items: flex-start;
 }
 
-button.btn-planificacion {
-    margin: 5px auto;
-}
-
 /* FIN DE COMENTARIO DE SECION PLANIFICACION */
 
 /* COMENTARIO DE SECCION DE UBICACION */
 
 div.content-ubicacion {
-    height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -150,8 +145,20 @@ div.grid-servicios{
 
 div.item-servicios{
     width: 100%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    border-radius: 20px;
     background-color: #7a3967;
     height: 100%;
+
+    ul li{
+        list-style: none;
+        font: 100 16px/25px 'poppins', sans-serif;
+        color: #FFF;
+    }
 }
 
 /* FIN DE COMENTARIO DE SECCION DE SERVICIOS */
@@ -207,7 +214,6 @@ img.img-portada{
 
 div.item-portada-img img{
     border-radius: 50% 50%;
-    box-shadow: 0px 0px 150px #7a3967;
 }
 
 h1.title-portada{

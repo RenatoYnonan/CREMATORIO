@@ -1,17 +1,25 @@
-<div class="c-servicios">
+<div class="c-servicios" style="padding: 40px 0px;">
     <div class="container">
-        <h2 class="text-center">Servicios de cremación</h2>
-        <p>Te ofrecemos 3 tipos de paquetes de cremación diseño para adaptarse a tus necesidades y presupuesto. Cada paquete incluye servicios esenciales para asegurar una despedida digna y respetuosa, desde opciones básicas hasta servicios personalizados y exclusivos. Estamos aquí para brindarte apoyo y cuidado en cada paso del proceso.</p>
+        <h2 class="text-center title-pc-page">Servicios de cremación</h2>
         <div class="grid-servicios">
             {% for i in planes %}
             <div class="item-servicios">
-                <h4 class="text-center">{{ i.name_plan }}</h4>
-                <p class="text-center">Este servicio incluye:</p>
                 <div>
-                    <h5 class="text-center">{{ i.price_plan }}</h5>
+                    <h4 class="text-center title-plan-services">{{ i.name_plan }}</h4>
+                    <p class="text-center">Este servicio incluye:</p>
+                    <div>
+                        <h5 class="text-center">{{ i.price_plan }}</h5>
+                    </div>
+                    <ul>
+                        {% for j in i.planes.all %}
+                        <li><i class="fa-regular fa-circle-check"></i> {{ j.name_product }}</li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                <button class="btn btn-primary">Contratar</button> <br>
-                <span>Precio de paquete disponible en Tarapoto y alrededores.</span>
+                <div>
+                    <button class="btn btn-primary" style="width: 100%;" >Contratar</button> <br>
+                    <span>Precio de paquete disponible en Tarapoto y alrededores.</span>
+                </div>
             </div>
             {% endfor %}
         </div>
