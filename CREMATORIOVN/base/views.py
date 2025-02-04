@@ -11,6 +11,8 @@ from fallecidos.forms import *
 from django.urls import reverse_lazy
 from django.urls import reverse
 
+from django.db.models import Q
+
 # Create your views here.
 class PaginaPrincipal(TemplateView):
     template_name = 'index-crematorio.html'
@@ -66,13 +68,27 @@ class CreateCondolencias(CreateView):
 
 #PRODUCTOS Y PLANES DE CREMACION
 def Tienda(request):
-    urnas =  ModelsProduct.objects.filter(category_product = 'URNAS')
+
+    categoria =  request.GET.getlist('categoria')
+
+
+    urnas = ModelsProduct.objects.filter( Q(category_product='URNAS') | Q(category_product='IMPLEMENTOS'))
+    planes = ModelsPlanes.objects.all()
+
+    if categoria:
+        urnas =  urnas.filter(category_product__in=categoria)
+        planes = []
+
+    if 'PLANES' in categoria:
+        planes = ModelsPlanes.objects.all()
+
 
     paginator =  Paginator(urnas, 6)
     num_page = request.GET.get('page')
     page_obj = paginator.get_page(num_page)
 
-    return render(request, 'tienda/index-tienda.html', {'page_obj':  page_obj})
+    return render(request, 'tienda/index-tienda.html', {'page_obj':  page_obj, 'planes': planes})
+    
 
 
 def detailsProduct(request, slug_product):

@@ -16,38 +16,21 @@
 <div class="container">
     <div class="store-product-plan">
         <div>
-            <div>
-                <h3 class="title-filter">Buscar</h3>
-                <form class="form-inline">
-                    <input class="search-store" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
-            <div>
-                <h3 class="title-filter">Categoria</h3>
-                <div >
-                    <input type="checkbox" name="" id="">
-                    <label for="">Urna</label>
-                </div>
-                <div >
-                    <input type="checkbox" name="" id="">
-                    <label for="">Planes</label>
-                </div>
-            </div>
-            <div>
-                <h3 class="title-filter">Material</h3>
-                <div >
-                    <input type="checkbox" name="" id="">
-                    <label for="">Madera</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="">
-                    <label for="">Marmol</label>
-                </div>
-                <div>
-                    <input type="checkbox" name="" id="">
-                    <label for="">Metal</label>
-                </div>
-            </div>
+            <form method="GET" action="{% url 'store' %}">
+                <h3>Buscar</h3>
+                <input type="text" name="q" placeholder="Search" value="">
+            
+                <h3>Categoría</h3>
+                <input type="checkbox" name="categoria" value="URNAS"{% if 'URNAS' in request.GET.categoria %}checked{% endif %}> Urna <br>
+                <input type="checkbox" name="categoria" value="PLANES"{% if 'PLANES' in request.GET.categoria %}checked{% endif %}> Paquetes <br>
+            
+                <h3>Material</h3>
+                <input type="checkbox" name="material" value="Madera" > Madera <br>
+                <input type="checkbox" name="material" value="Marmol" > Marmol <br>
+                <input type="checkbox" name="material" value="Metal" > Metal <br>
+            
+                <button style="width: 100%;" class="btn btn-primary" type="submit">Filtrar</button>
+            </form>
         </div>
         <div>
             <div class="list-product-grid">
@@ -68,23 +51,41 @@
                 </div>
                 
                 {% endfor %}
-            </div>
 
+                {% for j in planes %}
+                <div class="item-product">
+                    <h5>{{ j.name_plan }}</h5>
+                    <p>Madera</p>
+                    <img src="{% static 'images/EXCESO DE IA (1).png' %}" alt="">
+                    <span class="price-product">S/ {{ j.price_plan }}</span>
+                    <div class="flex-cart-store">
+                        <a class="button-details" href="#"> Ver detalles</a>
+                        <button class="icon">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                        
+                        
+                    </div>
+                </div>
+                
+                {% endfor %}
+            </div>
+            <br>
             {# nota: PAGINATION DE PRODUCTOS  #}
-            <div class="pagination">
+            <div class="pagination d-flex justify-content-center">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                        <a href="?page=1" class="pagination-item"><i class="fa-solid fa-caret-left"></i></a>
+                        <a href="?page={{ page_obj.previous_page_number }}" class="pagination-item"> {{ page_obj.previous_page_number }}</a>
                     {% endif %}
             
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    <span class="current pagination-item">
+                        {{ page_obj.number }}
                     </span>
             
                     {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                        <a href="?page={{ page_obj.next_page_number }}" class="pagination-item">{{ page_obj.next_page_number }}</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-item"><i class="fa-solid fa-caret-right"></i></a>
                     {% endif %}
                 </span>
             </div>
@@ -93,5 +94,13 @@
     
     </div>
 </div>
+<!-- <script>
+    document.querySelectorAll('input[name="categoria"]').forEach((checkbox) => {
+        checkbox.addEventListener('change', function() {
+            document.getElementById('filtro-form').submit();
+        });
+    });
+</script> -->
+
 {% endblock %}
 {% block c-general %}{% endblock %}
