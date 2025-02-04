@@ -31,4 +31,11 @@ urlpatterns = [
     path('exportar-planes-pdf/', ExportarPlanesPdf, name='exportar_planes_pdf'),
     #EXPORTAR DATOS A XML
     path('exportar-planes-xml/', ExportarPlanesXML, name='exportar_planes_xml'),
+
+
+    #URNAS
+    #LISTAR URNAS
+    path('list-urnas/', ListUrnas.as_view(), name='list-urnas' ),
+    #CREAR URNAS
+    path('create-urnas/', CreateUrnas.as_view(), name='create-urnas'),
 ]

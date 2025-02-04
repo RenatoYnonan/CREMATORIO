@@ -42,21 +42,25 @@ class ModelsProduct(models.Model):
         verbose_name_plural = 'Productos'
 
 
-class ModelsUrnas(ModelsProduct):
+class ModelsUrnas(models.Model):
     MATERIALES = [('METAL', 'METAL'), ('MADERA', 'MADERA'), ('MARMOL', 'MARMOL')]
 
-    material_urna =  models.CharField(max_length=10, choices=MATERIALES, default='MADERA', verbose_name='Material Urna')
-    slug_urna = models.SlugField(max_length=255, unique=True, blank=True)
-    state_urna =  models.BooleanField(default=True)
-    date_create_urna =  models.DateField(auto_now_add=True)
 
-    def save(self, *args, **kwargs):
-        if not self.slug_urna:
-            self.slug_urna = slugify(self.name_urna)
-        return super().save(*args, **kwargs)
+    material_urna =  models.CharField(max_length=10, choices=MATERIALES, default='MADERA', verbose_name='Material Urna')
+    nombre_urna = models.CharField(max_length=255, verbose_name='Nombre Urna')
+    price_urna = models.FloatField(verbose_name='Precio Urna')
+    stock_urna = models.IntegerField()
+    state_urna = models.BooleanField(default=True)
+    slug_urna = models.SlugField(max_length=255, unique=True, blank=True)
+    date_create_urna = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name_urna
+        return self.nombre_urna
+    
+    def save(self, *args, **kwargs):
+        if not self.slug_urna:
+            self.slug_urna = slugify(self.nombre_urna)
+        return super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Urna'

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import *
-
+from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 
 from django.contrib import messages
@@ -224,3 +224,23 @@ def ExportarPlanesPdf(request):
     response =  HttpResponse(template_pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'atachment; filename="planes.pdf"'
     return response
+
+
+#EXPORTAR URNAS
+
+class ListUrnas(ListView):
+    model = ModelsUrnas
+    template_name = 'urnas/index-urnas.html'
+    paginate_by = 6
+
+class CreateUrnas(CreateView):
+    model = ModelsUrnas
+    form_class = FormUrnas
+    template_name = 'urnas/index-form.html'
+    success_url = reverse_lazy('catalogo:list-urnas')
+
+class UpdateUrnas(UpdateView):
+    pass
+
+def DeleteUrnas(request, id):
+    pass
