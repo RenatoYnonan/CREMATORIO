@@ -71,16 +71,15 @@ def Tienda(request):
 
     categoria =  request.GET.getlist('categoria')
 
+    urnas = []  # Inicializa las listas vacías
+    planes = []
 
-    urnas = ModelsProduct.objects.filter( Q(category_product='URNAS') | Q(category_product='IMPLEMENTOS'))
-    planes = ModelsPlanes.objects.all()
-
-    if categoria:
-        urnas =  urnas.filter(category_product__in=categoria)
-        planes = []
+    if 'URNAS' in categoria:
+        urnas = ModelsUrnas.objects.all()
 
     if 'PLANES' in categoria:
         planes = ModelsPlanes.objects.all()
+        
 
 
     paginator =  Paginator(urnas, 6)
@@ -91,8 +90,8 @@ def Tienda(request):
     
 
 
-def detailsProduct(request, slug_product):
-    details_product = get_object_or_404(ModelsProduct, slug_product=slug_product)
+def detailsProduct(request, slug_urna):
+    details_product = get_object_or_404(ModelsUrnas, slug_urna=slug_urna)
     return render(request, 'tienda/index-details-product.html', {'product': details_product})
 
 # BLOG INFORMATIVOS

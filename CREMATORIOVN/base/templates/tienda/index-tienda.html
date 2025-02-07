@@ -36,12 +36,12 @@
             <div class="list-product-grid">
                 {% for i in page_obj %}
                 <div class="item-product">
-                    <h5>{{ i.name_product }}</h5>
+                    <h5>{{ i.nombre_urna }}</h5>
                     <p>Madera</p>
                     <img src="{% static 'images/EXCESO DE IA (1).png' %}" alt="">
-                    <span class="price-product">S/ {{ i.price_product }}</span>
+                    <span class="price-product">S/ {{ i.price_urna }}</span>
                     <div class="flex-cart-store">
-                        <a class="button-details" href="{% url 'details-product' i.slug_product %}"> Ver detalles</a>
+                        <a class="button-details" href="{% url 'details-product' i.slug_urna %}"> Ver detalles</a>
                         <button class="icon">
                             <i class="fa-solid fa-cart-plus"></i>
                         </button>

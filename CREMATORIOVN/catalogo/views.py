@@ -240,7 +240,12 @@ class CreateUrnas(CreateView):
     success_url = reverse_lazy('catalogo:list-urnas')
 
 class UpdateUrnas(UpdateView):
-    pass
+    model = ModelsUrnas
+    form_class = FormUrnas
+    template_name = 'urnas/index-form.html'
+    success_url = reverse_lazy('catalogo:list-urnas')
+    slug_field = 'slug_urna'  
+    slug_url_kwarg = 'slug_urna'
 
-def DeleteUrnas(request, id):
+def DeleteUrnas(request, slug_urna):
     pass

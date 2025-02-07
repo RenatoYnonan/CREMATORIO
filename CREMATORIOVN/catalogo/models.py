@@ -48,9 +48,11 @@ class ModelsUrnas(models.Model):
 
     material_urna =  models.CharField(max_length=10, choices=MATERIALES, default='MADERA', verbose_name='Material Urna')
     nombre_urna = models.CharField(max_length=255, verbose_name='Nombre Urna')
+    descriptions_urna = models.TextField(verbose_name='Descripción de Urna', blank=True, null=True)
     price_urna = models.FloatField(verbose_name='Precio Urna')
     stock_urna = models.IntegerField()
     state_urna = models.BooleanField(default=True)
+    product_urna =  models.ForeignKey(ModelsProduct, on_delete=models.CASCADE, related_name='urnas', null=True)
     slug_urna = models.SlugField(max_length=255, unique=True, blank=True)
     date_create_urna = models.DateField(auto_now_add=True)
 

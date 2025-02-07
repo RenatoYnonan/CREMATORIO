@@ -18,7 +18,7 @@
     <thead>
         <tr>
             <th scope="col">Nombre Urna</th>
-            <th scope="col">Descripción</th>
+
             <th scope="col">Precio</th>
             <th scope="col">Stock</th>
             <th scope="col">Estado</th>
@@ -29,14 +29,13 @@
 
         {% for i in page_obj %}
         <tr>
-            <td>{{ i.name_product }}</td>
-            <td>{{ i.descriptions_product }}</td>
-            <td>{{ i.price_product }}</td>
-            <td>{{ i.stock_product }}</td>
-            <td>{% if i.state_product   %} Activo {% else%} Inactivo {% endif %}</td>
+            <td>{{ i.nombre_urna }}</td>
+            <td>{{ i.price_urna }}</td>
+            <td>{{ i.stock_urna }}</td>
+            <td>{% if i.state_urna   %} Activo {% else%} Inactivo {% endif %}</td>
             <td class="td-actions">
-                <a href="{% url 'catalogo:update-product' i.id %}"><i class="fa-solid fa-pencil"></i></a>
-                <a href="{% url 'catalogo:delete-product' i.id %}"><i class="fa-solid fa-trash"></i></a>
+                <a href="{% url 'catalogo:update-urnas' i.slug_urna %}"><i class="fa-solid fa-pencil"></i></a>
+                <a href="#"><i class="fa-solid fa-trash"></i></a>
             </td>
         </tr>
         {% empty %}

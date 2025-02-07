@@ -38,4 +38,6 @@ urlpatterns = [
     path('list-urnas/', ListUrnas.as_view(), name='list-urnas' ),
     #CREAR URNAS
     path('create-urnas/', CreateUrnas.as_view(), name='create-urnas'),
+    #ACTUALIZAR URNAS
+    path('update-urnas/<slug:slug_urna>/', UpdateUrnas.as_view(), name='update-urnas'),
 ]

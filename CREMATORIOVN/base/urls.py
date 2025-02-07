@@ -11,7 +11,7 @@ urlpatterns =[
     #TIENDA
     path('store/', Tienda, name='store'),
     # Detalles de producto
-    path('details/<slug:slug_product>', detailsProduct ,name='details-product'),
+    path('details/<slug:slug_urna>', detailsProduct ,name='details-product'),
 
     #BLOGS
     path('blogs', indexblog, name='blogs'),
